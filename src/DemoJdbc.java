@@ -489,6 +489,22 @@ private static void afficher(ArrayList<String> list) {
 	}
 }
 
+public static boolean verifO(String entreprise, String poste) {
+	// TODO Auto-generated method stub
+	
+	// comme pour les autres avec Entreprise et poste en clé primaire
+	// si on trouve des doublons on pourais ajouter les postes
+	// mais comme on viens de faire ça pour empecher il devrai pas y en avoir
+	return false;
+}
+
+public static void ajouterO(String entreprise, String dur, String poste, String pla) {
+	// TODO Auto-generated method stub
+	
+	// comme pour les autres
+	
+}
+
 	
 
 
