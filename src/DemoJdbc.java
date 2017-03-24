@@ -342,7 +342,40 @@ public static void initModifCV(modifCV modifCV) {
 				e.printStackTrace();
 			}
 		}
-	}	
+	}
+
+public static void ajouterE(String nom,String chef, String tel, String adr, String com) {
+	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "INSERT INTO `entreprises`(`Nom`,`Chef`, `Tel`, `Adr`, `Com`) VALUES ('"+nom+"','"+chef+"','"+tel+"','"+adr+"','"+com+"')";
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+	
+}	
 }
 
 
