@@ -78,7 +78,7 @@ public class AjouterEntreprise extends JPanel {
 
 	public AjouterEntreprise(Application a) {
 		// TODO Auto-generated constructor stub
-		
+		this.a=a;
 setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();

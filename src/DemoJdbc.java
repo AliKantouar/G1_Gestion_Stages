@@ -355,7 +355,7 @@ public static void ajouterE(String nom,String chef, String tel, String adr, Stri
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql = "INSERT INTO `entreprises`(`Nom`,`Chef`, `Tel`, `Adr`, `Com`) VALUES ('"+nom+"','"+chef+"','"+tel+"','"+adr+"','"+com+"')";
+		String sql = "INSERT INTO `entreprises`(`Nom`, `Chef`, `Tel`, `Adr`, `Com`) VALUES ('"+nom+"','"+chef+"','"+tel+"','"+adr+"','"+com+"')";
 		st.executeUpdate(sql);
 	}
 	catch (SQLException e){

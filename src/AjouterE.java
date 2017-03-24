@@ -11,6 +11,7 @@ public class AjouterE implements ActionListener {
 	String nom;
 		int z ;
 	AjouterEntreprise b;
+	
 	public AjouterE(Application a , AjouterEntreprise b)
 	{
 		this.a=a;
@@ -27,6 +28,7 @@ public class AjouterE implements ActionListener {
 		this.com=b.getTextArea().getText();
 		
 		DemoJdbc.ajouterE(nom,chef,tel,adr,com);
+		
 		a.setContentPane(new AjouterEntreprise(this.a));
 		a.repaint();
 		a.revalidate();
