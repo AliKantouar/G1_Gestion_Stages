@@ -26,8 +26,14 @@ public class AjouterE implements ActionListener {
 		this.tel=b.getTextField_3().getText();
 		this.adr=b.getTextField_2().getText();
 		this.com=b.getTextArea().getText();
-		
-		DemoJdbc.ajouterE(nom,chef,tel,adr,com);
+		if(!DemoJdbc.verifE(nom))
+		{
+			DemoJdbc.ajouterE(nom,chef,tel,adr,com);
+		}
+		else
+		{
+			System.out.println("fal");
+		}
 		
 		a.setContentPane(new AjouterEntreprise(this.a));
 		a.repaint();
