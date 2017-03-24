@@ -62,10 +62,12 @@ public class AjouterOffre extends JPanel {
 		
 		ArrayList<String> list=ListeEntreprises();
 		String[] liste = new String[list.size()];
+		
 		for(int j=0;j<list.size();j++)
 		{
 			liste[j]=list.get(j);
 		}
+		
 		JComboBox comboBox = new JComboBox(liste);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
