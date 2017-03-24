@@ -1,4 +1,5 @@
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -431,6 +432,63 @@ public static boolean verifE(String nom) {
 	}
 	return existe;
 }
+
+public static ArrayList<String> liste() {
+	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	ArrayList<String> list = new ArrayList<String>();
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Nom` FROM `Entreprises`";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			list.add(rs.getString("nom"));
+					
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	afficher(list);
+	return list;
+}
+
+private static void afficher(ArrayList<String> list) {
+	// TODO Auto-generated method stub
+	for(int i = 0;i<list.size();i++)
+	{
+		System.out.println(list.get(i));
+	}
+}
+
 	
 
 

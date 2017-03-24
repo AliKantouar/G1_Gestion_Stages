@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.util.ArrayList;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -58,7 +60,13 @@ public class AjouterOffre extends JPanel {
 		gbc_lblNewLabel_1.gridy = 1;
 		panel_2.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		JComboBox comboBox = new JComboBox();
+		ArrayList<String> list=ListeEntreprises();
+		String[] liste = new String[list.size()];
+		for(int j=0;j<list.size();j++)
+		{
+			liste[j]=list.get(j);
+		}
+		JComboBox comboBox = new JComboBox(liste);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -120,6 +128,11 @@ public class AjouterOffre extends JPanel {
 		gbc_textField_2.gridy = 3;
 		panel_2.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
+	}
+
+	private ArrayList<String> ListeEntreprises() {
+		// TODO Auto-generated method stub
+		return DemoJdbc.liste();
 	}
 
 
