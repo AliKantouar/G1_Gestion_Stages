@@ -17,7 +17,7 @@ public class AjouterOffre extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	
+	private JComboBox comboBox;
 	/*public AjouterOffre() {
 
 	}*/
@@ -38,6 +38,8 @@ public class AjouterOffre extends JPanel {
 		
 		JButton btnNewButton = new JButton("Cr\u00E9e");
 		panel_1.add(btnNewButton);
+		btnNewButton.addActionListener(new AjouterO(this.a,this));
+		
 		
 		JButton btnNewButton_1 = new JButton("Retour");
 		panel_1.add(btnNewButton_1);
@@ -68,7 +70,7 @@ public class AjouterOffre extends JPanel {
 			liste[j]=list.get(j);
 		}
 		
-		JComboBox comboBox = new JComboBox(liste);
+		comboBox = new JComboBox(liste);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
@@ -130,6 +132,22 @@ public class AjouterOffre extends JPanel {
 		gbc_textField_2.gridy = 3;
 		panel_2.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
+	}
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
 	}
 
 	private ArrayList<String> ListeEntreprises() {
