@@ -28,7 +28,7 @@ public class AjouterO implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 	
-		this.entreprise=this.aj.getComboBox().getToolTipText();
+		this.entreprise=this.aj.getComboBox().getSelectedItem().toString();
 		this.dur=this.aj.getTextField_1().getText();
 		this.poste=this.aj.getTextField().getText();
 		this.pla=this.aj.getTextField_2().getText();

@@ -222,7 +222,7 @@ public static boolean connexion(String user, String mdp) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\" AND `mdp`=\""+mdp+"\"";
+		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -231,7 +231,7 @@ public static boolean connexion(String user, String mdp) {
 
 		while (rs.next()) {
 			System.out.println(rs.getString("user")+rs.getString("mdp"));
-			if(rs.getString("user").equals("")&&rs.getString("mdp").equals(""))
+			if(rs.getString("user").equals(""))
 			{
 				existe=false;
 			}
@@ -501,20 +501,94 @@ private static void afficher(ArrayList<String> list) {
 //Renvoie VRAI si une offre est identique (meme entreprise, poste et durée) existe
 //sinon renvoie FAUX
 public static boolean verifO(String entreprise, String poste) {
-	// TODO Auto-generated method stub
 	
-	// comme pour les autres avec Entreprise et poste en clé primaire
-	// si on trouve des doublons on pourais ajouter les postes
-	// mais comme on viens de faire ça pour empecher il devrai pas y en avoir
-	return false;
+	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	boolean existe = false;
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Ent`,`Pos` FROM `offres` WHERE `Ent`=\""+entreprise+"\" AND `Pos`=\""+poste+"\"";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			if(rs.getString("Ent").equals("")&&rs.getString("Pos").equals(""))
+			{
+				existe=false;
+			}
+			else
+			{
+				existe = true;
+			}
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return existe;
+
 }
 
 //Crée une nouvelle ligne dans le tableau "offres" dans la Base de donnée
 public static void ajouterO(String entreprise, String dur, String poste, String pla) {
 	// TODO Auto-generated method stub
 	
-	// comme pour les autres
-	
+	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "INSERT INTO `offres`(`Ent`, `Dur`, `Pos`, `Pla`) VALUES ('"+entreprise+"','"+dur+"','"+poste+"','"+pla+"')";
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+		
 }
 
 	
@@ -522,7 +596,3 @@ public static void ajouterO(String entreprise, String dur, String poste, String 
 
 
 }
-
-
-
-
