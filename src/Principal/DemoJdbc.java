@@ -257,7 +257,7 @@ public static boolean connexion(String user, String mdp) {
 }
 
 public static void modifierCV(String user ,String nom, String prenom, String tel,String adr, String mail, String descr) {
-	String url = "jdbc:mysql://localhost/formation";
+	String url = "jdbc:mysql://localhost/formation?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
