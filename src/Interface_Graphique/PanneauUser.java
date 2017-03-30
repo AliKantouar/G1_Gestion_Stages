@@ -1,4 +1,9 @@
+package Interface_Graphique;
 import javax.swing.JPanel;
+
+import Action_Listener.AllerPage;
+import Principal.Application;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagLayout;

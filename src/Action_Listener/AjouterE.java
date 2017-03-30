@@ -1,5 +1,10 @@
+package Action_Listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Interface_Graphique.AjouterEntreprise;
+import Principal.Application;
+import Principal.DemoJdbc;
 
 public class AjouterE implements ActionListener {
 

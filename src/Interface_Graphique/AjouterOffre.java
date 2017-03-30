@@ -1,3 +1,4 @@
+package Interface_Graphique;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -10,6 +11,12 @@ import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+
+import Action_Listener.AjouterO;
+import Action_Listener.AllerPage;
+import Principal.Application;
+import Principal.DemoJdbc;
+
 
 public class AjouterOffre extends JPanel {
 

@@ -1,3 +1,4 @@
+package Interface_Graphique;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
@@ -8,6 +9,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+
+import Action_Listener.AllerPage;
+import Action_Listener.ModifierCV;
+import Principal.Application;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 
@@ -18,6 +24,18 @@ public class modifCV extends JPanel {
 	private JTextField textField_3;
 	private JTextArea textArea ;
 	String user;
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
+	}
+	public Application getA() {
+		return a;
+	}
+	public void setA(Application a) {
+		this.a = a;
+	}
 	Application a;
 	private JTextField textField_4;
 	/**

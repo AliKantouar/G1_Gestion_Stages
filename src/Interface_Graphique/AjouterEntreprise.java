@@ -1,3 +1,4 @@
+package Interface_Graphique;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -9,6 +10,11 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
+
+import Action_Listener.AjouterE;
+import Action_Listener.AllerPage;
+import Principal.Application;
+
 import javax.swing.JTextArea;
 
 public class AjouterEntreprise extends JPanel {
@@ -21,10 +27,6 @@ public class AjouterEntreprise extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AjouterEntreprise() {
-	
-
-	}
 
 	
 	

@@ -1,3 +1,4 @@
+package Principal;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -5,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Interface_Graphique.PanneauAdmin;
+import Interface_Graphique.choix;
 
 public class Application extends JFrame {
 

@@ -1,7 +1,18 @@
+package Action_Listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+
+import Interface_Graphique.AjouterEntreprise;
+import Interface_Graphique.AjouterOffre;
+import Interface_Graphique.Connexion;
+import Interface_Graphique.Inscription;
+import Interface_Graphique.PanneauAdmin;
+import Interface_Graphique.PanneauUser;
+import Interface_Graphique.choix;
+import Interface_Graphique.modifCV;
+import Principal.Application;
 
 public class AllerPage implements ActionListener {
 

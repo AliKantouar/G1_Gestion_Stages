@@ -1,5 +1,9 @@
+package Principal;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import Interface_Graphique.modifCV;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -55,6 +59,7 @@ public static void sauverEnBase(String personne) {
 	
 }
 
+//Crée une nouvelle ligne dans le tableau "cv" dans la Base de donnée
 public static void Inscrire(String user,String mdp) {
 	String url = "jdbc:mysql://localhost/formation?useSSL=false";
 	String login = "root";
@@ -307,7 +312,7 @@ public static void initModifCV(modifCV modifCV) {
 			// Etape 3 : Création d'un statement
 			st = cn.createStatement();
 
-			String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+modifCV.user+"\"";
+			String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+modifCV.getUser()+"\"";
 
 			// Etape 4 : exécution requête
 			rs = st.executeQuery(sql);
@@ -345,6 +350,7 @@ public static void initModifCV(modifCV modifCV) {
 		}
 	}
 
+//Crée une nouvelle ligne dans le tableau "entreprises" dans la Base de donnée
 public static void ajouterE(String nom,String chef, String tel, String adr, String com) {
 	String url = "jdbc:mysql://localhost/formation?useSSL=false";
 	String login = "root";
@@ -378,6 +384,8 @@ public static void ajouterE(String nom,String chef, String tel, String adr, Stri
 	
 }
 
+//Renvoie VRAI si le nom d'entreprise existe
+//sinon renvoie FAUX
 public static boolean verifE(String nom) {
 
 	// Information d'accès à la base de données
@@ -489,6 +497,9 @@ private static void afficher(ArrayList<String> list) {
 	}
 }
 
+
+//Renvoie VRAI si une offre est identique (meme entreprise, poste et durée) existe
+//sinon renvoie FAUX
 public static boolean verifO(String entreprise, String poste) {
 	// TODO Auto-generated method stub
 	
@@ -498,6 +509,7 @@ public static boolean verifO(String entreprise, String poste) {
 	return false;
 }
 
+//Crée une nouvelle ligne dans le tableau "offres" dans la Base de donnée
 public static void ajouterO(String entreprise, String dur, String poste, String pla) {
 	// TODO Auto-generated method stub
 	
