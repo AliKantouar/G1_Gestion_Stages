@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Interface_Graphique.Connexion;
+import Interface_Graphique.ErreurConnexion;
 import Interface_Graphique.PanneauUser;
 import Principal.Application;
 import Principal.DemoJdbc;
@@ -26,7 +27,7 @@ public class ConnexionU implements ActionListener {
 		this.mdp=c.getTextField_1().getText();
 		if(this.user.equals("")||this.mdp.equals(""))
 		{
-			System.out.println("Fail");
+			ErreurConnexion mdpInconnu= new ErreurConnexion();
 		}
 		else
 		{
