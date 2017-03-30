@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Interface_Graphique.AjouterEntreprise;
+import Interface_Graphique.Erreur;
 import Principal.Application;
 import Principal.DemoJdbc;
 
@@ -37,7 +38,7 @@ public class AjouterE implements ActionListener {
 		}
 		else
 		{
-			System.out.println("fal");
+			Erreur error=new Erreur("Cette entreprise est déjà enregistrée");
 		}
 		
 		a.setContentPane(new AjouterEntreprise(this.a));

@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Interface_Graphique.AjouterOffre;
+import Interface_Graphique.Erreur;
 import Principal.Application;
 import Principal.DemoJdbc;
 
@@ -39,7 +40,7 @@ public class AjouterO implements ActionListener {
 		}
 		else
 		{
-			System.out.println("fal");
+			Erreur error=new Erreur("Cette offre est déjà proposée");
 		}
 		
 		a.setContentPane(new AjouterOffre(this.a));

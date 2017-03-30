@@ -200,7 +200,7 @@ public static void connexion(String user, String mdp) {
 	
 }
 */
-public static boolean connexion(String user, String mdp) {
+public static boolean verifU(String user, String mdp) {
 
 	// Information d'accès à la base de données
 	String url = "jdbc:mysql://localhost/formation?useSSL=false";
@@ -222,7 +222,7 @@ public static boolean connexion(String user, String mdp) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\" AND `mdp`=\""+mdp+"\"";
+		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -230,8 +230,8 @@ public static boolean connexion(String user, String mdp) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			System.out.println(rs.getString("user")+rs.getString("mdp"));
-			if(rs.getString("user").equals("")&&rs.getString("mdp").equals(""))
+			System.out.println(rs.getString("user"));
+			if(rs.getString("user").equals(""))
 			{
 				existe=false;
 			}
