@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Interface_Graphique.Connexion;
+import Interface_Graphique.Erreur;
 import Interface_Graphique.PanneauUser;
 import Principal.Application;
 import Principal.DemoJdbc;
@@ -26,11 +27,11 @@ public class ConnexionU implements ActionListener {
 		this.mdp=c.getTextField_1().getText();
 		if(this.user.equals("")||this.mdp.equals(""))
 		{
-			System.out.println("Fail");
+			Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
 		}
 		else
 		{
-			if(DemoJdbc.connexion(user,mdp))
+			if(DemoJdbc.verifU(user,mdp))
 			{
 				a.setContentPane(new PanneauUser(this.a,user));
 				a.repaint();

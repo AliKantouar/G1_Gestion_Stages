@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Interface_Graphique.Connexion;
+import Interface_Graphique.Erreur;
 import Interface_Graphique.Inscription;
 import Principal.Application;
 import Principal.DemoJdbc;
@@ -27,8 +28,8 @@ public class AjouterU implements ActionListener {
 		this.user=b.getTextField().getText();
 		this.mdp=b.getTextField_1().getText();
 		
-		if(user.equals("")||mdp.equals("")||DemoJdbc.connexion(user, mdp)){
-			System.out.println("Fail");
+		if(user.equals("")||mdp.equals("")||DemoJdbc.verifU(user, mdp)){
+			Erreur error=new Erreur("Ce nom d'utilisateur n'est pas disponible");
 		}
 		else
 		{

@@ -200,7 +200,7 @@ public static void connexion(String user, String mdp) {
 	
 }
 */
-public static boolean connexion(String user, String mdp) {
+public static boolean verifU(String user, String mdp) {
 
 	// Information d'accès à la base de données
 	String url = "jdbc:mysql://localhost/formation?useSSL=false";
@@ -230,7 +230,11 @@ public static boolean connexion(String user, String mdp) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
+<<<<<<< HEAD
 			System.out.println(rs.getString("user")+rs.getString("mdp"));
+=======
+			System.out.println(rs.getString("user"));
+>>>>>>> origin/master
 			if(rs.getString("user").equals(""))
 			{
 				existe=false;
