@@ -489,6 +489,60 @@ public static ArrayList<String> liste() {
 	return list;
 }
 
+
+public static ArrayList<Offres> listeO() {
+	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	ArrayList<Offres> list = new ArrayList<Offres>();
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Ent`, `Dur`, `Pos`, `Pla` FROM `offres`";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			list.add(new Offres(rs.getString("Ent"),rs.getString("Dur"),rs.getString("Pos"),rs.getString("Pla")));
+					
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	for(int i = 0;i<list.size();i++)
+	{
+		list.get(i).Afficher();
+	}
+	return list;
+}
+
+
+
 private static void afficher(ArrayList<String> list) {
 	// TODO Auto-generated method stub
 	for(int i = 0;i<list.size();i++)

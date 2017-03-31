@@ -8,6 +8,7 @@ import Interface_Graphique.AjouterEntreprise;
 import Interface_Graphique.AjouterOffre;
 import Interface_Graphique.Connexion;
 import Interface_Graphique.Inscription;
+import Interface_Graphique.ListeCv;
 import Interface_Graphique.PanneauAdmin;
 import Interface_Graphique.PanneauUser;
 import Interface_Graphique.choix;
@@ -59,6 +60,10 @@ public class AllerPage implements ActionListener {
 		if(b==8){
 			a.setContentPane(new modifCV(this.a,user));
 			}
+		if(b==9){
+			a.setContentPane(new ListeCv(this.a,user));
+		}
+		
 		a.repaint();
 		a.revalidate();
 	
