@@ -27,6 +27,42 @@ public class Offres {
 		return this.Pos;
 	}
 
+	public String getEnt() {
+		return Ent;
+	}
+
+
+
+	public void setEnt(String ent) {
+		Ent = ent;
+	}
+
+
+
+	public String getDur() {
+		return Dur;
+	}
+
+
+
+	public void setDur(String dur) {
+		Dur = dur;
+	}
+
+
+
+	public String getPla() {
+		return Pla;
+	}
+
+
+
+	public void setPla(String pla) {
+		Pla = pla;
+	}
+
+
+
 	public String AfficherS() {
 		// TODO Auto-generated method stub
 		return "Entreprise : "+this.Ent+" Durée : "+this.Dur+" Poste : "+this.Pos+" Places : "+this.Pla;

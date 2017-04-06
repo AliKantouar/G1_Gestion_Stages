@@ -33,8 +33,76 @@ public class ListeCv extends JPanel {
 	Application a;
 	String user;
 	JRadioButton rdbtnNewRadioButton_p;
+	GridBagConstraints gbc ;
 	JRadioButton rdbtnNewRadioButton_D;
 	JRadioButton rdbtnNewRadioButtonE;
+	JComboBox comboBox_1;
+	JPanel Pane;
+	JPanel panel_2;
+	JScrollPane scrollPane;
+	JComboBox comboBox;
+	
+	
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
+	}
+
+
+	public GridBagConstraints getGbc() {
+		return gbc;
+	}
+
+
+	public void setGbc(GridBagConstraints gbc) {
+		this.gbc = gbc;
+	}
+
+
+	public JPanel getPane() {
+		return Pane;
+	}
+
+
+	public void setPane(JPanel pane) {
+		Pane = pane;
+	}
+
+
+	public JPanel getPanel_2() {
+		return panel_2;
+	}
+
+
+	public void setPanel_2(JPanel panel_2) {
+		this.panel_2 = panel_2;
+	}
+
+
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+
+	public void setScrollPane(JScrollPane scrollPane) {
+		this.scrollPane = scrollPane;
+	}
+
+
+	public JComboBox getComboBox_1() {
+		return comboBox_1;
+	}
+
+
+	public void setComboBox_1(JComboBox comboBox_1) {
+		this.comboBox_1 = comboBox_1;
+	}
+
+
 	/**
 	Enfaite c'est list des offres rien à voir avec les cvs
 		 */
@@ -58,7 +126,6 @@ public class ListeCv extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Recherche");
-		btnNewButton.addActionListener(new Recherche(this));
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("Postuler");
@@ -68,7 +135,7 @@ public class ListeCv extends JPanel {
 		btnNewButton_1.addActionListener(new AllerPage(this.a,7,user));
 		panel_1.add(btnNewButton_1);
 		
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
 		add(panel_2, BorderLayout.CENTER);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0};
@@ -111,7 +178,7 @@ public class ListeCv extends JPanel {
 		{
 			liste[j]=listE.get(j);
 		}
-		JComboBox comboBox = new JComboBox(liste);
+		comboBox = new JComboBox(liste);
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.gridwidth = 2;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -173,7 +240,7 @@ public class ListeCv extends JPanel {
 		{
 			listeo[j]=listEo.get(j).poste();
 		}
-		JComboBox comboBox_1 = new JComboBox(listeo);
+		comboBox_1 = new JComboBox(listeo);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBox_1.gridwidth = 2;
@@ -181,43 +248,33 @@ public class ListeCv extends JPanel {
 		gbc_comboBox_1.gridx = 2;
 		gbc_comboBox_1.gridy = 2;
 		panel_4.add(comboBox_1, gbc_comboBox_1);
-		
-		JPanel Pane = new JPanel();
-		GridBagLayout grille = new GridBagLayout();
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill=GridBagConstraints.BOTH;
-		gbc.insets=new Insets(10,10,10,10);
-		Pane.setLayout(grille);
-		gbc.gridy=0;
+		btnNewButton.addActionListener(new Recherche(this));
+			
 		
 		
 		ArrayList<Offres> list=ListeOffres();
-		Icon Ent = new ImageIcon("ressources/Ent.png"); 
+		afficherliste(list);
 		
-		
-		for(int i = 0;i<list.size();i++)
-		{
-			gbc.gridy=i;
-			gbc.gridx=0;
-			Offres o = list.get(i);
-			JLabel z = new JLabel(o.AfficherS());
-			z.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
-			z.setIcon(Ent);
-			Pane.add(z,gbc);
-			gbc.gridx++;
-			Pane.add(new JRadioButton(""),gbc);
-		}
-		Pane.validate();
-		Pane.repaint();
-		
-		gbc.gridy=1;
-		gbc.gridx=0;
-		JScrollPane scrollPane = new JScrollPane(Pane);
-		panel_2.add(scrollPane, gbc);
-		this.validate();
-		this.repaint();
-		
-		
+	}
+
+
+	public JTextField getTextField() {
+		return textField;
+	}
+
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
 	}
 
 
@@ -235,7 +292,46 @@ public class ListeCv extends JPanel {
 		return rdbtnNewRadioButton_D;
 	}
 
-
+	public void afficherliste(ArrayList<Offres> offres)
+	{
+		Pane = new JPanel();
+		GridBagLayout grille = new GridBagLayout();
+		 gbc = new GridBagConstraints();
+		gbc.fill=GridBagConstraints.BOTH;
+		gbc.insets=new Insets(10,10,10,10);
+		Pane.setLayout(grille);
+		gbc.gridy=0;
+		Icon Ent = new ImageIcon("ressources/Ent.png"); 
+	
+	System.out.println(offres.size());
+	for(int i = 0;i<offres.size();i++)
+	{
+		gbc.gridy=i;
+		gbc.gridx=0;
+		Offres o = offres.get(i);
+		JLabel z = new JLabel(o.AfficherS());
+		z.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+		z.setIcon(Ent);
+		Pane.add(z,gbc);
+		gbc.gridx++;
+		Pane.add(new JRadioButton(""),gbc);
+	}
+	Pane.validate();
+	Pane.repaint();
+	
+	gbc.gridy=1;
+	gbc.gridx=0;
+	scrollPane = new JScrollPane(Pane);
+	panel_2.add(scrollPane, gbc);
+	
+	this.validate();
+	this.repaint();
+	
+		
+	}
+	
+	
+	
 	public void setRdbtnNewRadioButton_D(JRadioButton rdbtnNewRadioButton_D) {
 		this.rdbtnNewRadioButton_D = rdbtnNewRadioButton_D;
 	}
