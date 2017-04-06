@@ -3,8 +3,11 @@ package Interface_Graphique;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -29,12 +32,19 @@ public class ListeCv extends JPanel {
 	private JTextField textField_1;
 	Application a;
 	String user;
+	JRadioButton rdbtnNewRadioButton_p;
+	JRadioButton rdbtnNewRadioButton_D;
+	JRadioButton rdbtnNewRadioButtonE;
 	/**
-	 * Create the panel.
-	 */
+	Enfaite c'est list des offres rien à voir avec les cvs
+		 */
 	public ListeCv(Application a, String user) {
 		this.a=a;
 		this.user=user;
+		this.a.setPreferredSize(new Dimension(800, 600));
+		this.a.pack();
+		this.a.setLocationRelativeTo(null);
+		this.a.setVisible(true);
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -48,6 +58,7 @@ public class ListeCv extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Recherche");
+		btnNewButton.addActionListener(new Recherche(this));
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_2 = new JButton("Postuler");
@@ -80,12 +91,12 @@ public class ListeCv extends JPanel {
 		gbl_panel_4.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_4.setLayout(gbl_panel_4);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
+		rdbtnNewRadioButtonE = new JRadioButton("");
 		GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton.insets = new Insets(0, 0, 5, 5);
 		gbc_rdbtnNewRadioButton.gridx = 0;
 		gbc_rdbtnNewRadioButton.gridy = 0;
-		panel_4.add(rdbtnNewRadioButton, gbc_rdbtnNewRadioButton);
+		panel_4.add(rdbtnNewRadioButtonE, gbc_rdbtnNewRadioButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("Entreprise :");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
@@ -109,12 +120,12 @@ public class ListeCv extends JPanel {
 		gbc_comboBox.gridy = 0;
 		panel_4.add(comboBox, gbc_comboBox);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("");
-		GridBagConstraints gbc_rdbtnNewRadioButton_1 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_1.gridx = 0;
-		gbc_rdbtnNewRadioButton_1.gridy = 1;
-		panel_4.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);
+		rdbtnNewRadioButton_D = new JRadioButton("");
+		GridBagConstraints gbc_rdbtnNewRadioButton_D = new GridBagConstraints();
+		gbc_rdbtnNewRadioButton_D.insets = new Insets(0, 0, 5, 5);
+		gbc_rdbtnNewRadioButton_D.gridx = 0;
+		gbc_rdbtnNewRadioButton_D.gridy = 1;
+		panel_4.add(rdbtnNewRadioButton_D, gbc_rdbtnNewRadioButton_D);
 		
 		JLabel lblDure = new JLabel("Dur\u00E9e(min/max) :");
 		GridBagConstraints gbc_lblDure = new GridBagConstraints();
@@ -141,12 +152,12 @@ public class ListeCv extends JPanel {
 		panel_4.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("");
+		rdbtnNewRadioButton_p = new JRadioButton("");
 		GridBagConstraints gbc_rdbtnNewRadioButton_2 = new GridBagConstraints();
 		gbc_rdbtnNewRadioButton_2.insets = new Insets(0, 0, 0, 5);
 		gbc_rdbtnNewRadioButton_2.gridx = 0;
 		gbc_rdbtnNewRadioButton_2.gridy = 2;
-		panel_4.add(rdbtnNewRadioButton_2, gbc_rdbtnNewRadioButton_2);
+		panel_4.add(rdbtnNewRadioButton_p, gbc_rdbtnNewRadioButton_2);
 		
 		JLabel lblPoste = new JLabel("Poste:");
 		GridBagConstraints gbc_lblPoste = new GridBagConstraints();
@@ -154,8 +165,15 @@ public class ListeCv extends JPanel {
 		gbc_lblPoste.gridx = 1;
 		gbc_lblPoste.gridy = 2;
 		panel_4.add(lblPoste, gbc_lblPoste);
+	
 		
-		JComboBox comboBox_1 = new JComboBox();
+		ArrayList<Offres> listEo=DemoJdbc.listeO();
+		String[] listeo = new String[listEo.size()];
+		for(int j=0;j<listEo.size();j++)
+		{
+			listeo[j]=listEo.get(j).poste();
+		}
+		JComboBox comboBox_1 = new JComboBox(listeo);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 0, 5);
 		gbc_comboBox_1.gridwidth = 2;
@@ -174,6 +192,7 @@ public class ListeCv extends JPanel {
 		
 		
 		ArrayList<Offres> list=ListeOffres();
+		Icon Ent = new ImageIcon("ressources/Ent.png"); 
 		
 		
 		for(int i = 0;i<list.size();i++)
@@ -183,6 +202,7 @@ public class ListeCv extends JPanel {
 			Offres o = list.get(i);
 			JLabel z = new JLabel(o.AfficherS());
 			z.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+			z.setIcon(Ent);
 			Pane.add(z,gbc);
 			gbc.gridx++;
 			Pane.add(new JRadioButton(""),gbc);
@@ -198,6 +218,36 @@ public class ListeCv extends JPanel {
 		this.repaint();
 		
 		
+	}
+
+
+	public JRadioButton getRdbtnNewRadioButton_p() {
+		return rdbtnNewRadioButton_p;
+	}
+
+
+	public void setRdbtnNewRadioButton_p(JRadioButton rdbtnNewRadioButton_p) {
+		this.rdbtnNewRadioButton_p = rdbtnNewRadioButton_p;
+	}
+
+
+	public JRadioButton getRdbtnNewRadioButton_D() {
+		return rdbtnNewRadioButton_D;
+	}
+
+
+	public void setRdbtnNewRadioButton_D(JRadioButton rdbtnNewRadioButton_D) {
+		this.rdbtnNewRadioButton_D = rdbtnNewRadioButton_D;
+	}
+
+
+	public JRadioButton getRdbtnNewRadioButtonE() {
+		return rdbtnNewRadioButtonE;
+	}
+
+
+	public void setRdbtnNewRadioButtonE(JRadioButton rdbtnNewRadioButtonE) {
+		this.rdbtnNewRadioButtonE = rdbtnNewRadioButtonE;
 	}
 
 

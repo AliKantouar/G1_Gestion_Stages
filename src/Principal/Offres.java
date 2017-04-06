@@ -22,7 +22,10 @@ public class Offres {
 		System.out.println("Entreprise : "+this.Ent+" Durée : "+this.Dur+" Poste : "+this.Pos+" Places : "+this.Pla);
 	}
 
-
+	public String poste()
+	{
+		return this.Pos;
+	}
 
 	public String AfficherS() {
 		// TODO Auto-generated method stub

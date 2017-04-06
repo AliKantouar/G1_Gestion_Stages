@@ -1,4 +1,5 @@
 package Action_Listener;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -55,6 +56,7 @@ public class AllerPage implements ActionListener {
 			a.setContentPane(new Inscription(this.a));
 		}
 		if(b==7){
+			a.setPreferredSize(new Dimension(400,300));
 			a.setContentPane(new PanneauUser(this.a,user));
 		}
 		if(b==8){
