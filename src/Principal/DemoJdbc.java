@@ -10,58 +10,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DemoJdbc {
-	/*
-public static void main(String[] args)
-{
-	reinitialiser();
-	sauverEnBase("Tomy");
-	sauverEnBase("Tomyli");
-	sauverEnBase("Boby");
-	supprEnBase("Tomy");
-	System.out.println("paf");
-	
-}
 
-*/
-
-
-public static void sauverEnBase(String personne) {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
-	String login = "root";
-	String passwd = "";
-	Connection cn =null;
-	Statement st =null;
-	try{
-		Class.forName("com.mysql.jdbc.Driver");
-		cn = DriverManager.getConnection(url,login,passwd);
-		st= cn.createStatement();
-		
-		String sql = "INSERT INTO `javadb`(`personne`) VALUES ('"+personne+"')";
-		
-		st.executeUpdate(sql);
-	}
-	catch (SQLException e){
-		e.printStackTrace();
-	}
-	catch (ClassNotFoundException e){
-		e.printStackTrace();
-	} 
-	finally {
-			try {
-				cn.close();
-				st.close();
-				}
-			catch (SQLException e)
-				{
-				e.printStackTrace();
-				}
-			}
-	
-}
 
 //Crée une nouvelle ligne dans le tableau "cv" dans la Base de donnée
 public static void Inscrire(String user,String mdp) {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -72,7 +25,7 @@ public static void Inscrire(String user,String mdp) {
 		st= cn.createStatement();
 		System.out.println(mdp);
 		
-		String sql = "INSERT INTO `cv` (`user`, `mdp`, `tel`, `mail`, `addr`, `formation`, `nom`, `prenom`) VALUES ('"+user+"', '"+mdp+"', '', '', '', '', '', '');";
+		String sql = "INSERT INTO `Utilisateur` (`Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets`) VALUES ('"+user+"', '"+mdp+"', '', '', '', '', '', '', '', '', '');";
 		
 		st.executeUpdate(sql);
 	}
@@ -97,7 +50,7 @@ public static void Inscrire(String user,String mdp) {
 
 
 public static void supprEnBase(String personne) {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -131,7 +84,7 @@ public static void supprEnBase(String personne) {
 }
 
 public static void reinitialiser() {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -166,45 +119,11 @@ public static void reinitialiser() {
 
 
 
-/*
-public static void connexion(String user, String mdp) {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
-	String login = "root";
-	String passwd = "";
-	Connection cn =null;
-	Statement st =null;
-	try{
-		Class.forName("com.mysql.jdbc.Driver");
-		cn = DriverManager.getConnection(url,login,passwd);
-		st= cn.createStatement();
-		
-		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\" AND `mdp`=\""+mdp+"\"";
-		
-		st.executeUpdate(sql);
-	}
-	catch (SQLException e){
-		e.printStackTrace();
-	}
-	catch (ClassNotFoundException e){
-		e.printStackTrace();
-	} 
-	finally {
-			try {
-				cn.close();
-				st.close();
-				}
-			catch (SQLException e)
-				{
-				e.printStackTrace();
-				}
-			}
-	
-}
-*/
+
 public static boolean verifU(String user, String mdp) {
 
 	// Information d'accès à la base de données
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -223,7 +142,7 @@ public static boolean verifU(String user, String mdp) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\" AND `mdp`=\""+mdp+"\"";
+		String sql = "SELECT `Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets` FROM `Utilisateur` WHERE `Identifiant`=\""+user+"\" AND `Mdp`=\""+mdp+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -232,11 +151,9 @@ public static boolean verifU(String user, String mdp) {
 
 		while (rs.next()) {
 
-			System.out.println(rs.getString("user")+rs.getString("mdp"));
+		
 
-			System.out.println(rs.getString("user"));
-
-			if(rs.getString("user").equals(""))
+			if(rs.getString("Identifiant").equals(""))
 			{
 				existe=false;
 			}
@@ -261,8 +178,8 @@ public static boolean verifU(String user, String mdp) {
 	return existe;
 }
 
-public static void modifierCV(String user ,String nom, String prenom, String tel,String adr, String mail, String descr) {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+public static void modifierCV(String user ,String nom, String prenom, String tel,String adr, String mail, String form,String comp,String exp ,String interets) {
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -272,7 +189,7 @@ public static void modifierCV(String user ,String nom, String prenom, String tel
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql ="UPDATE `cv` SET `tel`=\""+tel+"\",`mail`=\""+mail+"\",`addr`=\""+adr+"\",`formation`=\""+descr+"\",`nom`=\""+nom+"\",`prenom`=\""+prenom+"\" WHERE user=\""+user+"\"";
+		String sql ="UPDATE `Utilisateur` SET `Telephone`=\""+tel+"\",`Mail`=\""+mail+"\",`Adresse`=\""+adr+"\",`Nom`=\""+nom+"\",`Prenom`=\""+prenom+"\",`Formation`=\""+form+"\",`Competence`=\""+comp+"\",`Experience`=\""+exp+"\",`Interets`=\""+interets+"\" WHERE Identifiant=\""+user+"\"";
 		
 		st.executeUpdate(sql);
 	}
@@ -296,10 +213,11 @@ public static void modifierCV(String user ,String nom, String prenom, String tel
 	
 }
 
+
 public static void initModifCV(modifCV modifCV) {
 
 		// Information d'accès à la base de données
-		String url = "jdbc:mysql://localhost/formation?useSSL=false";
+		String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 		String login = "root";
 		String passwd = "";
 		Connection cn =null;
@@ -317,7 +235,7 @@ public static void initModifCV(modifCV modifCV) {
 			// Etape 3 : Création d'un statement
 			st = cn.createStatement();
 
-			String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+modifCV.getUser()+"\"";
+			String sql = "SELECT `Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets` FROM `Utilisateur` WHERE `Identifiant`=\""+modifCV.getUser()+"\"";
 
 			// Etape 4 : exécution requête
 			rs = st.executeQuery(sql);
@@ -356,8 +274,8 @@ public static void initModifCV(modifCV modifCV) {
 	}
 
 //Crée une nouvelle ligne dans le tableau "entreprises" dans la Base de donnée
-public static void ajouterE(String nom,String chef, String tel, String adr, String com) {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+public static void ajouterE(String nom,String mdp, String adr, String tel, String com) {
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -367,7 +285,7 @@ public static void ajouterE(String nom,String chef, String tel, String adr, Stri
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql = "INSERT INTO `entreprises`(`Nom`, `Chef`, `Tel`, `Adr`, `Com`) VALUES ('"+nom+"','"+chef+"','"+tel+"','"+adr+"','"+com+"')";
+		String sql = "INSERT INTO `entreprises`(`NomEntreprise`, `Mdp`, `Adresse`, `Telephonne`, `Commentaire`) VALUES ('"+nom+"','"+mdp+"','"+adr+"','"+tel+"','"+com+"')";
 		st.executeUpdate(sql);
 	}
 	catch (SQLException e){
@@ -394,7 +312,7 @@ public static void ajouterE(String nom,String chef, String tel, String adr, Stri
 public static boolean verifE(String nom) {
 
 	// Information d'accès à la base de données
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -413,7 +331,7 @@ public static boolean verifE(String nom) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Nom` FROM `Entreprises` WHERE `Nom`=\""+nom+"\"";
+		String sql = "SELECT `NomEntreprise` FROM `Entreprises` WHERE `NomEntreprise`=\""+nom+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -421,7 +339,7 @@ public static boolean verifE(String nom) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			if(rs.getString("nom").equals(""))
+			if(rs.getString("NomEntreprise").equals(""))
 			{
 				existe=false;
 			}
@@ -446,8 +364,10 @@ public static boolean verifE(String nom) {
 	return existe;
 }
 
+
+//liste des noms des entreprises
 public static ArrayList<String> liste() {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -466,7 +386,7 @@ public static ArrayList<String> liste() {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Nom` FROM `Entreprises`";
+		String sql = "SELECT `NomEntreprise` FROM `entreprises`";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -474,7 +394,7 @@ public static ArrayList<String> liste() {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			list.add(rs.getString("nom"));
+			list.add(rs.getString("NomEntreprise"));
 					
 		}
 	} catch (SQLException e) {
@@ -496,7 +416,7 @@ public static ArrayList<String> liste() {
 
 
 public static ArrayList<Offres> listeO() {
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -515,7 +435,7 @@ public static ArrayList<Offres> listeO() {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Ent`, `Dur`, `Pos`, `Pla` FROM `offres`";
+		String sql = "SELECT `NomEntreprise`, `Duree`, `Poste`, `Places` FROM `offres`";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -523,7 +443,7 @@ public static ArrayList<Offres> listeO() {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			list.add(new Offres(rs.getString("Ent"),rs.getString("Dur"),rs.getString("Pos"),rs.getString("Pla")));
+			list.add(new Offres(rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste"),rs.getString("Places")));
 					
 		}
 	} catch (SQLException e) {
@@ -561,7 +481,7 @@ private static void afficher(ArrayList<String> list) {
 //sinon renvoie FAUX
 public static boolean verifO(String entreprise, String poste) {
 	
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -580,7 +500,7 @@ public static boolean verifO(String entreprise, String poste) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Ent`,`Pos` FROM `offres` WHERE `Ent`=\""+entreprise+"\" AND `Pos`=\""+poste+"\"";
+		String sql = "SELECT `NomEntreprise`,`Poste` FROM `offres` WHERE `NomEntreprise`=\""+entreprise+"\" AND `Poste`=\""+poste+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -588,7 +508,7 @@ public static boolean verifO(String entreprise, String poste) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			if(rs.getString("Ent").equals("")&&rs.getString("Pos").equals(""))
+			if(rs.getString("NomEntreprise").equals("")&&rs.getString("Poste").equals(""))
 			{
 				existe=false;
 			}
@@ -618,7 +538,7 @@ public static boolean verifO(String entreprise, String poste) {
 public static void ajouterO(String entreprise, String dur, String poste, String pla) {
 	// TODO Auto-generated method stub
 	
-	String url = "jdbc:mysql://localhost/formation?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -628,7 +548,7 @@ public static void ajouterO(String entreprise, String dur, String poste, String 
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql = "INSERT INTO `offres`(`Ent`, `Dur`, `Pos`, `Pla`) VALUES ('"+entreprise+"','"+dur+"','"+poste+"','"+pla+"')";
+		String sql = "INSERT INTO `offres`(`NomEntreprise`, `Duree`, `Poste`, `Places`) VALUES ('"+entreprise+"','"+dur+"','"+poste+"','"+pla+"')";
 		st.executeUpdate(sql);
 	}
 	catch (SQLException e){

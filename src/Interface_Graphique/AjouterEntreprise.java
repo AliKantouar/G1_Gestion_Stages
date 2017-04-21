@@ -127,7 +127,7 @@ setLayout(new BorderLayout(0, 0));
 		panel_2.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JLabel lblChef = new JLabel("Nom PDG :");
+		JLabel lblChef = new JLabel("Mot de passe :");
 		GridBagConstraints gbc_lblChef = new GridBagConstraints();
 		gbc_lblChef.insets = new Insets(0, 0, 5, 5);
 		gbc_lblChef.gridx = 0;

@@ -10,7 +10,7 @@ import Principal.DemoJdbc;
 public class AjouterE implements ActionListener {
 
 	Application a ;
-	String chef ;
+	String mdp ;
 	String tel ;
 	String adr ;
 	String com ;
@@ -28,13 +28,13 @@ public class AjouterE implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 	
 		this.nom=b.getTextField().getText();
-		this.chef=b.getTextField_1().getText();
+		this.mdp=b.getTextField_1().getText();
 		this.tel=b.getTextField_3().getText();
 		this.adr=b.getTextField_2().getText();
 		this.com=b.getTextArea().getText();
 		if(!DemoJdbc.verifE(nom))
 		{
-			DemoJdbc.ajouterE(nom,chef,tel,adr,com);
+			DemoJdbc.ajouterE(nom,mdp,adr,tel,com);
 		}
 		else
 		{
