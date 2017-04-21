@@ -6,7 +6,7 @@ public class Offres {
 	String Dur;
 	String Pos;
 	String Pla;
-	
+
 	
 	Offres(String Ent , String Dur , String Pos , String Pla){
 		this.Ent=Ent;
