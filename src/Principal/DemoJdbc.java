@@ -222,7 +222,7 @@ public static boolean verifU(String user, String mdp) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\"";
+		String sql = "SELECT `user`, `mdp`, `tel`, `mail`, `addr`, `formation` FROM `cv` WHERE `user`=\""+user+"\" AND `mdp`=\""+mdp+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
