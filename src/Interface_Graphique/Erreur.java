@@ -28,7 +28,7 @@ public class Erreur extends JDialog {
 		getContentPane().setLayout(new BorderLayout());
 		
 		JLabel lblNewLabel = new JLabel(message);
-		lblNewLabel.setIcon(new ImageIcon("D:\\Desktop\\Espace de travail\\L3\\ProjetObjet\\G1_Gestion_Stages\\ressources\\error.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("ressources\\error.jpg"));
 		getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 		
 	
