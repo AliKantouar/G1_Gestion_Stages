@@ -26,14 +26,10 @@ public class Erreur extends JDialog {
 		setFont(new Font("Dialog", Font.BOLD, 12));
 		setBounds(100, 100, 450, 173);
 		getContentPane().setLayout(new BorderLayout());
-		{
-			JTextPane txtpnMotDePasse = new JTextPane();
-			txtpnMotDePasse.setForeground(Color.RED);
-			txtpnMotDePasse.setFont(new Font("Simplified Arabic Fixed", Font.BOLD, 24));
-			txtpnMotDePasse.setEditable(false);
-	 	getContentPane().add(txtpnMotDePasse, BorderLayout.EAST);
-			txtpnMotDePasse.setText(message);
-		}		
+		
+		JLabel lblNewLabel = new JLabel(message);
+		lblNewLabel.setIcon(new ImageIcon("D:\\Desktop\\Espace de travail\\L3\\ProjetObjet\\G1_Gestion_Stages\\ressources\\error.jpg"));
+		getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 		
 	
 	
