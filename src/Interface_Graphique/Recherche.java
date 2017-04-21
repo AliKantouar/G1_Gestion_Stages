@@ -38,16 +38,19 @@ public class Recherche implements ActionListener {
 		this.d=lcv.getRdbtnNewRadioButton_D().isSelected();
 		this.p=lcv.getRdbtnNewRadioButton_p().isSelected();
 		ArrayList<Offres> offres = new ArrayList<Offres>();
+		boolean faire = true;
 		if(e)
 		{
 			if(d)
 			{
 				if(p)
 				{
+					System.out.println("edp");
 					offres=Rechercheedp();
 				}
 				else
 				{
+					System.out.println("ed");
 					offres=Rechercheed();
 				}	
 			}
@@ -55,10 +58,12 @@ public class Recherche implements ActionListener {
 			{
 				if(p)
 				{
+					System.out.println("ep");
 					offres=Rechercheep();
 				}
 				else
 				{
+					System.out.println("e");
 					offres=Recherchee();
 				}
 			}
@@ -69,10 +74,12 @@ public class Recherche implements ActionListener {
 			{
 				if(p)
 				{
+					System.out.println("dp");
 					offres=Recherchedp();
 				}
 				else
 				{
+					System.out.println("d");
 					offres=Recherched();
 				}	
 			}
@@ -80,15 +87,22 @@ public class Recherche implements ActionListener {
 			{
 				if(p)
 				{
+					System.out.println("p");
 					offres=Recherchep();
+				}
+				else
+				{
+					faire = false;
 				}
 
 			}
 		}
 		
+		if(faire){
+		this.lcv.setNbr(offres.size());
 		this.lcv.getPanel_2().remove(this.lcv.getScrollPane());
 		this.lcv.afficherliste(offres);
-
+		}
 	}
 
 	
@@ -119,10 +133,10 @@ public class Recherche implements ActionListener {
 			if(this.lcv.getTextField().getText().toString().equals("")&&this.lcv.getTextField_1().getText().toString().equals("")){
 				System.out.println("BUG");
 			}
-			else
+			else{
 				if(this.lcv.getTextField().getText().toString().equals(""))
 				{
-					System.out.println("à l'aide");
+					System.out.println("MAX");
 					if(Integer.parseInt(offres.get(i).getDur())>Integer.parseInt(this.lcv.getTextField_1().getText().toString()))
 					{
 						System.out.println("trop grand");
@@ -130,8 +144,9 @@ public class Recherche implements ActionListener {
 						i--;
 					}
 				}
-				else
+				else if(this.lcv.getTextField_1().getText().toString().equals(""))
 				{
+					System.out.println("MIN");
 					if(Integer.parseInt(offres.get(i).getDur())<Integer.parseInt(this.lcv.getTextField().getText().toString()))
 					{
 						System.out.println("trop petit");
@@ -139,7 +154,17 @@ public class Recherche implements ActionListener {
 						i--;
 					}
 				}
-			
+				else
+				{
+					System.out.println("MAX ET MIN");
+					if(Integer.parseInt(offres.get(i).getDur())>Integer.parseInt(this.lcv.getTextField_1().getText().toString())||Integer.parseInt(offres.get(i).getDur())<Integer.parseInt(this.lcv.getTextField().getText().toString()))
+					{
+						System.out.println("trop petit");
+						offres.remove(i);
+						i--;
+					}
+				}
+			}
 		}
 		
 		System.out.println(offres.size());

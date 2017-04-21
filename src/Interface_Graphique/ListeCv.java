@@ -41,6 +41,7 @@ public class ListeCv extends JPanel {
 	JPanel panel_2;
 	JScrollPane scrollPane;
 	JComboBox comboBox;
+	private int nbr = DemoJdbc.listeO().size();
 	
 	
 	public JComboBox getComboBox() {
@@ -118,7 +119,7 @@ public class ListeCv extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("Recherche d'offre de Stage :");
+		JLabel lblNewLabel = new JLabel("Recherche d'offre de Stage ("+this.getNbr()+") :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panel.add(lblNewLabel);
 		
@@ -258,6 +259,12 @@ public class ListeCv extends JPanel {
 	}
 
 
+	private int getNbr() {
+		// TODO Auto-generated method stub
+		return this.nbr;
+	}
+
+
 	public JTextField getTextField() {
 		return textField;
 	}
@@ -355,6 +362,12 @@ public class ListeCv extends JPanel {
 	private ArrayList<String> ListeEntreprises() {
 		// TODO Auto-generated method stub
 		return DemoJdbc.liste();
+	}
+
+
+	public void setNbr(int size) {
+		// TODO Auto-generated method stub
+		this.nbr =size;
 	}
 
 
