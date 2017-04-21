@@ -70,6 +70,7 @@ public static void Inscrire(String user,String mdp) {
 		Class.forName("com.mysql.jdbc.Driver");
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
+		System.out.println(mdp);
 		
 		String sql = "INSERT INTO `cv` (`user`, `mdp`, `tel`, `mail`, `addr`, `formation`, `nom`, `prenom`) VALUES ('"+user+"', '"+mdp+"', '', '', '', '', '', '');";
 		

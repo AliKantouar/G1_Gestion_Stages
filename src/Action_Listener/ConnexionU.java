@@ -7,6 +7,7 @@ import Interface_Graphique.Erreur;
 import Interface_Graphique.PanneauUser;
 import Principal.Application;
 import Principal.DemoJdbc;
+import Principal.Md5;
 
 public class ConnexionU implements ActionListener {
 
@@ -25,6 +26,9 @@ public class ConnexionU implements ActionListener {
 
 		this.user=c.getTextField().getText();
 		this.mdp=c.getTextField_1().getText();
+		//criptage du mot de passe
+		Md5 criptage=new Md5(mdp);
+		mdp=criptage.getCode();
 		if(this.user.equals("")||this.mdp.equals(""))
 		{
 			Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
@@ -36,6 +40,9 @@ public class ConnexionU implements ActionListener {
 				a.setContentPane(new PanneauUser(this.a,user));
 				a.repaint();
 				a.revalidate();
+			}
+			else{
+				Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
 			}
 		
 		

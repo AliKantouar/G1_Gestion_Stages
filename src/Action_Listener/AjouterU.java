@@ -7,6 +7,7 @@ import Interface_Graphique.Erreur;
 import Interface_Graphique.Inscription;
 import Principal.Application;
 import Principal.DemoJdbc;
+import Principal.Md5;
 
 public class AjouterU implements ActionListener {
 
@@ -27,16 +28,19 @@ public class AjouterU implements ActionListener {
 
 		this.user=b.getTextField().getText();
 		this.mdp=b.getTextField_1().getText();
-		
+		//criptage du mot de passe
+		Md5 criptage=new Md5(mdp);
+		mdp=criptage.getCode();
+			
 		if(user.equals("")||mdp.equals("")||DemoJdbc.verifU(user, mdp)){
 			Erreur error=new Erreur("Ce nom d'utilisateur n'est pas disponible");
 		}
 		else
 		{
-		DemoJdbc.Inscrire(user, mdp);
-		a.setContentPane(new Connexion(this.a));
-		a.repaint();
-		a.revalidate();
+			DemoJdbc.Inscrire(user, mdp);
+			a.setContentPane(new Connexion(this.a));
+			a.repaint();
+			a.revalidate();
 		}
 	}
 
