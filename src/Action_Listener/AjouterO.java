@@ -29,6 +29,8 @@ public class AjouterO implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 	
+		
+		if(this.aj.getComboBox().getSelectedItem()!=null){
 		this.entreprise=this.aj.getComboBox().getSelectedItem().toString();
 		this.dur=this.aj.getTextField_1().getText();
 		this.poste=this.aj.getTextField().getText();
@@ -46,7 +48,7 @@ public class AjouterO implements ActionListener {
 		a.setContentPane(new AjouterOffre(this.a));
 		a.repaint();
 		a.revalidate();
-		
+		}
 	}
 
 }

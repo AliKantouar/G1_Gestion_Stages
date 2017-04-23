@@ -99,6 +99,10 @@ public class ModifierCV implements ActionListener {
 	String mail;
 	String descr;
 	String adr;
+	String form;
+	String comp;
+	String inte;
+	String exp;
 	
 	public ModifierCV(Application a, modifCV modifCV,String user) {
 		// TODO Auto-generated constructor stub
@@ -116,7 +120,7 @@ public class ModifierCV implements ActionListener {
 		this.descr=this.m.getTextArea().getText();
 		this.adr=this.m.getTextField_4().getText();
 		
-		DemoJdbc.modifierCV(user,nom,prenom,tel,adr,mail,descr);
+		DemoJdbc.modifierCV(user,nom,prenom,tel,adr,mail,form,comp,exp,inte);
 		
 		a.setContentPane(new PanneauUser(this.a,user));
 		a.repaint();

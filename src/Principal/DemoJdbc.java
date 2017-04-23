@@ -14,7 +14,7 @@ public class DemoJdbc {
 
 //Crée une nouvelle ligne dans le tableau "cv" dans la Base de donnée
 public static void Inscrire(String user,String mdp) {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -50,7 +50,7 @@ public static void Inscrire(String user,String mdp) {
 
 
 public static void supprEnBase(String personne) {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -84,7 +84,7 @@ public static void supprEnBase(String personne) {
 }
 
 public static void reinitialiser() {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -123,7 +123,7 @@ public static void reinitialiser() {
 public static boolean verifU(String user, String mdp) {
 
 	// Information d'accès à la base de données
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -179,7 +179,7 @@ public static boolean verifU(String user, String mdp) {
 }
 
 public static void modifierCV(String user ,String nom, String prenom, String tel,String adr, String mail, String form,String comp,String exp ,String interets) {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -189,7 +189,7 @@ public static void modifierCV(String user ,String nom, String prenom, String tel
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql ="UPDATE `Utilisateur` SET `Telephone`=\""+tel+"\",`Mail`=\""+mail+"\",`Adresse`=\""+adr+"\",`Nom`=\""+nom+"\",`Prenom`=\""+prenom+"\",`Formation`=\""+form+"\",`Competence`=\""+comp+"\",`Experience`=\""+exp+"\",`Interets`=\""+interets+"\" WHERE Identifiant=\""+user+"\"";
+		String sql ="UPDATE `Utilisateur` SET `Telephone`=\""+tel+"\",`Mail`=\""+mail+"\",`Adresse`=\""+adr+"\",`Nom`=\""+nom+"\",`Prenom`=\""+prenom+"\",`Formation`=\""+form+"\",`Competences`=\""+comp+"\",`Experience`=\""+exp+"\",`Interets`=\""+interets+"\" WHERE Identifiant=\""+user+"\"";
 		
 		st.executeUpdate(sql);
 	}
@@ -217,7 +217,7 @@ public static void modifierCV(String user ,String nom, String prenom, String tel
 public static void initModifCV(modifCV modifCV) {
 
 		// Information d'accès à la base de données
-		String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+		String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 		String login = "root";
 		String passwd = "";
 		Connection cn =null;
@@ -275,7 +275,7 @@ public static void initModifCV(modifCV modifCV) {
 
 //Crée une nouvelle ligne dans le tableau "entreprises" dans la Base de donnée
 public static void ajouterE(String nom,String mdp, String adr, String tel, String com) {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -285,7 +285,7 @@ public static void ajouterE(String nom,String mdp, String adr, String tel, Strin
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql = "INSERT INTO `entreprises`(`NomEntreprise`, `Mdp`, `Adresse`, `Telephonne`, `Commentaire`) VALUES ('"+nom+"','"+mdp+"','"+adr+"','"+tel+"','"+com+"')";
+		String sql = "INSERT INTO `entreprises`(`NomEntreprise`, `Mdp`, `Adresse`, `Telephone`, `Commentaire`) VALUES ('"+nom+"','"+mdp+"','"+adr+"','"+tel+"','"+com+"')";
 		st.executeUpdate(sql);
 	}
 	catch (SQLException e){
@@ -312,7 +312,7 @@ public static void ajouterE(String nom,String mdp, String adr, String tel, Strin
 public static boolean verifE(String nom) {
 
 	// Information d'accès à la base de données
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -367,7 +367,7 @@ public static boolean verifE(String nom) {
 
 //liste des noms des entreprises
 public static ArrayList<String> liste() {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -416,7 +416,7 @@ public static ArrayList<String> liste() {
 
 
 public static ArrayList<Offres> listeO() {
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -481,7 +481,7 @@ private static void afficher(ArrayList<String> list) {
 //sinon renvoie FAUX
 public static boolean verifO(String entreprise, String poste) {
 	
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -538,7 +538,7 @@ public static boolean verifO(String entreprise, String poste) {
 public static void ajouterO(String entreprise, String dur, String poste, String pla) {
 	// TODO Auto-generated method stub
 	
-	String url = "jdbc:mysql://localhost/gestionstage?useSSL=false";
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
 	Connection cn =null;
@@ -568,6 +568,71 @@ public static void ajouterO(String entreprise, String dur, String poste, String 
 				}
 			}
 		
+}
+
+
+
+public static ArrayList<String> listeP() {
+	// TODO Auto-generated method stub
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	ArrayList<String> list = new ArrayList<String>();
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `NomEntreprise`, `Duree`, `Poste`, `Places` FROM `offres`";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			list.add(new String(rs.getString("Poste")));
+					
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	for(int i = 0;i<list.size();i++)
+	{
+		for(int j = i+1;j<list.size();j++)
+		{
+			if(list.get(i).equals(list.get(j)))
+			{
+				list.remove(j);
+				j--;
+				
+			}
+		}
+	}
+	return list;
 }
 
 	

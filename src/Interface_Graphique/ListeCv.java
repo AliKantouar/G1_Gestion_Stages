@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JTextField;
 
 import Action_Listener.AllerPage;
+import Action_Listener.Recherche;
 import Principal.Application;
 import Principal.DemoJdbc;
 import Principal.Offres;
@@ -235,12 +236,15 @@ public class ListeCv extends JPanel {
 		panel_4.add(lblPoste, gbc_lblPoste);
 	
 		
-		ArrayList<Offres> listEo=DemoJdbc.listeO();
+		ArrayList<String> listEo=DemoJdbc.listeP();
+		
 		String[] listeo = new String[listEo.size()];
 		for(int j=0;j<listEo.size();j++)
 		{
-			listeo[j]=listEo.get(j).poste();
+			listeo[j]=listEo.get(j);
 		}
+		
+		
 		comboBox_1 = new JComboBox(listeo);
 		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
 		gbc_comboBox_1.insets = new Insets(0, 0, 0, 5);

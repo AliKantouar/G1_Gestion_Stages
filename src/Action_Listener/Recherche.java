@@ -1,4 +1,4 @@
-package Interface_Graphique;
+package Action_Listener;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
+import Interface_Graphique.ListeCv;
 import Principal.DemoJdbc;
 import Principal.Offres;
 
@@ -45,7 +46,7 @@ public class Recherche implements ActionListener {
 			{
 				if(p)
 				{
-					System.out.println("edp");
+					System.out.println("edp ---------------------------------------------------------------");
 					offres=Rechercheedp();
 				}
 				else
@@ -92,7 +93,10 @@ public class Recherche implements ActionListener {
 				}
 				else
 				{
-					faire = false;
+					faire=false;
+					this.lcv.setNbr(DemoJdbc.listeO().size());
+					this.lcv.getPanel_2().remove(this.lcv.getScrollPane());
+					this.lcv.afficherliste(DemoJdbc.listeO());
 				}
 
 			}
@@ -112,9 +116,10 @@ public class Recherche implements ActionListener {
 	ArrayList<Offres> offres = DemoJdbc.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
+			
 			if(!offres.get(i).poste().equals(this.lcv.getComboBox_1().getSelectedItem().toString()))
 			{
-				System.out.println("different !");
+				
 				offres.remove(i);
 				i--;
 			}
@@ -126,40 +131,39 @@ public class Recherche implements ActionListener {
 
 	private ArrayList<Offres> Recherched() {
 		// TODO Auto-generated method stub
-		System.out.println("rentre");
+		
 		ArrayList<Offres> offres = DemoJdbc.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
 			if(this.lcv.getTextField().getText().toString().equals("")&&this.lcv.getTextField_1().getText().toString().equals("")){
-				System.out.println("BUG");
+			
 			}
 			else{
 				if(this.lcv.getTextField().getText().toString().equals(""))
 				{
-					System.out.println("MAX");
+					
 					if(Integer.parseInt(offres.get(i).getDur())>Integer.parseInt(this.lcv.getTextField_1().getText().toString()))
 					{
-						System.out.println("trop grand");
+					
 						offres.remove(i);
 						i--;
 					}
 				}
 				else if(this.lcv.getTextField_1().getText().toString().equals(""))
 				{
-					System.out.println("MIN");
 					if(Integer.parseInt(offres.get(i).getDur())<Integer.parseInt(this.lcv.getTextField().getText().toString()))
 					{
-						System.out.println("trop petit");
+					
 						offres.remove(i);
 						i--;
 					}
 				}
 				else
 				{
-					System.out.println("MAX ET MIN");
+					
 					if(Integer.parseInt(offres.get(i).getDur())>Integer.parseInt(this.lcv.getTextField_1().getText().toString())||Integer.parseInt(offres.get(i).getDur())<Integer.parseInt(this.lcv.getTextField().getText().toString()))
 					{
-						System.out.println("trop petit");
+						
 						offres.remove(i);
 						i--;
 					}
@@ -183,7 +187,7 @@ public class Recherche implements ActionListener {
 		{
 			if(!offres.get(i).getEnt().equals(this.lcv.getComboBox().getSelectedItem().toString()))
 			{
-				System.out.println("different !");
+				
 				offres.remove(i);
 				i--;
 			}
@@ -213,11 +217,10 @@ public class Recherche implements ActionListener {
 		{
 			for(int j = 0;j<offres2.size();j++)
 			{
-				System.out.println(offres1.get(i).AfficherS()+"----------"+offres2.get(j).AfficherS());
 				if(offres1.get(i).getEnt().equals(offres2.get(j).getEnt())&&offres1.get(i).getDur().equals(offres2.get(j).getDur())
 						&&offres1.get(i).poste().equals(offres2.get(j).poste()))
 				{
-					System.out.println("ICI");
+					
 					offres.add(offres1.get(i));
 				}
 			}
@@ -247,10 +250,21 @@ public class Recherche implements ActionListener {
 	private ArrayList<Offres> Rechercheedp() {
 		// TODO Auto-generated method stub
 		ArrayList<Offres> offresd = Recherched();
-		ArrayList<Offres> offresp = Recherchee();
+		
+		ArrayList<Offres> offresp = Recherchep();
+		
 		ArrayList<Offres> offrese = Recherchee();
+		
 		ArrayList<Offres> offres = Commun3(offresd,offresp,offrese);
+		
 		return offres;
+	}
+
+	private void afficher(ArrayList<Offres> offresd) {
+		for(int i =0;i<offresd.size();i++)
+		{
+			offresd.get(i).Afficher();
+		}
 	}
 
 	private ArrayList<Offres> Commun3(ArrayList<Offres> offres1, ArrayList<Offres> offres2, ArrayList<Offres> offres3) {
@@ -260,16 +274,19 @@ public class Recherche implements ActionListener {
 		{
 			for(int j = 0;j<offres2.size();j++)
 			{
-				for(int k = 0;k<offres2.size();k++)
+				for(int k = 0;k<offres3.size();k++)
 				{
 					if(offres1.get(i).getEnt().equals(offres2.get(j).getEnt())&&offres1.get(i).getDur().equals(offres2.get(j).getDur())
 							&&offres1.get(i).poste().equals(offres2.get(j).poste()))
 					{
-						if(offres1.get(i).getEnt().equals(offres3.get(j).getEnt())&&offres1.get(i).getDur().equals(offres3.get(j).getDur())
-								&&offres1.get(i).poste().equals(offres3.get(j).poste()))
+						if(offres1.get(i).getEnt().equals(offres3.get(k).getEnt())&&offres1.get(i).getDur().equals(offres3.get(k).getDur())
+								&&offres1.get(i).poste().equals(offres3.get(k).poste()))
 						{
-							System.out.println("ICI");
-							offres.add(offres1.get(i));
+							
+							
+								offres1.get(i).Afficher();
+								offres.add(offres1.get(i));
+							
 						}
 					}
 				}	
