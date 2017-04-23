@@ -16,20 +16,12 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextPane;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Font;
 
-public class CV extends JDialog {
+public class CV extends JDialog implements ActionListener{
 
-	/**
-	 * Launch the application.
-	 */
-	
-
-	
-	
-	/**
-	 * Create the dialog.
-	 */
 	public CV(String user) {
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
@@ -50,6 +42,7 @@ public class CV extends JDialog {
 			getContentPane().add(panel, BorderLayout.SOUTH);
 			{
 				JButton btnRetour = new JButton("Retour");
+				btnRetour.addActionListener(this);
 				panel.add(btnRetour);
 			}
 		}
@@ -85,7 +78,7 @@ public class CV extends JDialog {
 					panel_1.add(lblTlphone, gbc_lblTlphone);
 				}
 				{
-					JTextPane textPane = new JTextPane();
+					JLabel textPane = new JLabel();
 					textPane.setText(a.getTel());
 					GridBagConstraints gbc_textPane = new GridBagConstraints();
 					gbc_textPane.insets = new Insets(0, 0, 5, 5);
@@ -103,7 +96,7 @@ public class CV extends JDialog {
 					panel_1.add(lblMail, gbc_lblMail);
 				}
 				{
-					JTextPane textPane = new JTextPane();
+					JLabel textPane = new JLabel();
 					textPane.setText(a.getTel());
 					GridBagConstraints gbc_textPane = new GridBagConstraints();
 					gbc_textPane.insets = new Insets(0, 0, 5, 0);
@@ -121,7 +114,7 @@ public class CV extends JDialog {
 					panel_1.add(lblAdresse, gbc_lblAdresse);
 				}
 				{
-					JTextPane textPane = new JTextPane();
+					JLabel textPane = new JLabel();
 					textPane.setText(a.getAdr());
 					GridBagConstraints gbc_textPane = new GridBagConstraints();
 					gbc_textPane.gridwidth = 3;
@@ -141,6 +134,12 @@ public class CV extends JDialog {
 				panel.add(panel_1, gbc_panel_1);
 			}
 		}
+	}
+
+	
+	public void actionPerformed(ActionEvent arg0) {
+		this.dispose();
+		
 	}
 
 }

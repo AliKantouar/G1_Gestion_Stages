@@ -10,15 +10,21 @@ public class VoirCV extends JButton implements ActionListener {
 
 	
 	String user;
-	public VoirCV(String user)
+	String nom;
+	public VoirCV(String nom ,String user)
 	{
 		
+		this.nom=nom;
+		this.user=user;
+		this.setText(nom);
+		this.addActionListener(this);
 	}
 	
 	
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		new CV("user");
+		CV a =new CV(user);
+		
 	}
 
 	

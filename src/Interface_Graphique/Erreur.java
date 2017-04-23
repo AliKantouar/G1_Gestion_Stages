@@ -19,9 +19,7 @@ import java.awt.Color;
 
 public class Erreur extends JDialog {
 
-	/**
-	 * Create the dialog.
-	 */
+	
 	public Erreur(String message) {
 		setFont(new Font("Dialog", Font.BOLD, 12));
 		setBounds(100, 100, 450, 173);

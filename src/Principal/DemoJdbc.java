@@ -923,6 +923,138 @@ public static Utilisateur UtilisateurViaId(String id) {
 	return a;
 }
 
+
+public static void modifPostulation(Postulation p,boolean etat) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		String sql = "";
+		if(etat)
+		{
+			sql ="UPDATE `postulation` SET `Etat`=\""+"T"+"\" WHERE Identifiant=\""+p.user+"\" AND `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\"";
+			SoustrairePlace(p);
+		}
+		else
+		{
+			sql ="UPDATE `postulation` SET `Etat`=\""+"F"+"\" WHERE Identifiant=\""+p.user+"\" AND `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\"";
+			
+		}
+		
+		st.executeUpdate(sql);
+		
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+	
+}
+
+
+private static void SoustrairePlace(Postulation p) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql  ="UPDATE `Offres` SET `Places`=\""+NombrePlaces(p)+"\" WHERE `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\" AND `Duree`=\""+p.Dur+"\"";
+			
+		
+		
+		st.executeUpdate(sql);
+		
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+}
+
+
+private static int NombrePlaces(Postulation p) {
+	{
+		String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+		String login = "root";
+		String passwd = "";
+		Connection cn =null;
+		Statement st =null;
+		ResultSet rs =null;
+		int places = 0; 
+		
+		try {
+
+			// Etape 1 : Chargement du driver
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Etape 2 : récupération de la connexion
+			cn = DriverManager.getConnection(url, login, passwd);
+
+			// Etape 3 : Création d'un statement
+			st = cn.createStatement();
+
+			String sql = "SELECT `NomEntreprise`, `Duree`, `Poste`, `Places` FROM `offres` WHERE `NomEntreprise`=\""+p.Ent+"\" AND `Duree`=\""+p.Dur+"\" AND `Poste`=\""+p.Pos+"\"";
+
+			// Etape 4 : exécution requête
+			rs = st.executeQuery(sql);
+
+			// Si récup données alors étapes 5 (parcours Resultset)
+
+			while (rs.next()) {
+				places = Integer.parseInt(rs.getString("Places"));		
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+			// Etape 6 : libérer ressources de la mémoire.
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return places;
+	}
+}
+
 	
 
 

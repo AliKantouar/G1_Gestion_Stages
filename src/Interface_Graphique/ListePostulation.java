@@ -84,10 +84,10 @@ public class ListePostulation extends JPanel {
 			z.setIcon(Ent);
 			Pane.add(z,gbc);
 			gbc.gridx++;
-			Pane.add(new JButton("Accepter"),gbc);
-		//	Pane.add(new VoirCV("Voir CV",p.getUser()),gbc);
+		//	Pane.add(new JButton("Accepter"),gbc);
+			Pane.add(new VoirCV("Voir CV",p.getUser()),gbc);
 			gbc.gridx++;
-			Pane.add(new JButton("Accepter"),gbc);
+			Pane.add(new AccepterPostulation("Accepter",p),gbc);
 			gbc.gridx++;
 			Pane.add(new JButton("Refuser"),gbc);
 			
