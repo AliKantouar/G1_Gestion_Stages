@@ -41,7 +41,7 @@ public class ConnexionEnt extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	
-	public ConnexionEnt(Application a, String user) {
+	public ConnexionEnt(Application a) {
 		this.a=a;
 		setLayout(new BorderLayout(0, 0));
 		
@@ -50,7 +50,7 @@ public class ConnexionEnt extends JPanel {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnNewButton_1 = new JButton("Crée entreprise");
-		btnNewButton_1.addActionListener(new AllerPage(this.a,3));
+		btnNewButton_1.addActionListener(new AllerPage(this.a,15));
 		panel.add(btnNewButton_1, BorderLayout.WEST);
 		
 		JButton btnNewButton = new JButton("Retour");
