@@ -49,6 +49,7 @@ public class PanneauEnt extends Container {
 		add(panel_1, gbc_panel_1);
 		
 		JButton btnNewButton = new JButton("Consulter postulation");
+		btnNewButton.addActionListener(new AllerPage(this.a,12,user));
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);

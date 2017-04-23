@@ -6,6 +6,7 @@ import Interface_Graphique.AjouterEntreprise;
 import Interface_Graphique.Erreur;
 import Principal.Application;
 import Principal.DemoJdbc;
+import Principal.Md5;
 
 public class AjouterE implements ActionListener {
 
@@ -32,15 +33,19 @@ public class AjouterE implements ActionListener {
 		this.tel=b.getTextField_3().getText();
 		this.adr=b.getTextField_2().getText();
 		this.com=b.getTextArea().getText();
-		if(!DemoJdbc.verifE(nom))
+		if(!mdp.equals(""))
 		{
-			DemoJdbc.ajouterE(nom,mdp,adr,tel,com);
+			if(!DemoJdbc.verifE(nom))
+			{
+				Md5 criptage=new Md5(mdp);
+				mdp=criptage.getCode();
+				DemoJdbc.ajouterE(nom,mdp,adr,tel,com);
+			}
+			else
+			{
+				Erreur error=new Erreur("Cette entreprise est déjà enregistrée");
+			}
 		}
-		else
-		{
-			Erreur error=new Erreur("Cette entreprise est déjà enregistrée");
-		}
-		
 		a.setContentPane(new AjouterEntreprise(this.a));
 		a.repaint();
 		a.revalidate();

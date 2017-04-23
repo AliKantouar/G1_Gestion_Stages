@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JScrollPane;
 
 public class ListePostulation extends JPanel {
 
@@ -32,6 +34,7 @@ public class ListePostulation extends JPanel {
 		add(panel, BorderLayout.NORTH);
 		
 		JLabel lblListeDesCandidatures = new JLabel("Liste des Candidatures :");
+		lblListeDesCandidatures.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		panel.add(lblListeDesCandidatures);
 		
 		JPanel panel_1 = new JPanel();
@@ -40,6 +43,12 @@ public class ListePostulation extends JPanel {
 		JButton btnNewButton = new JButton("Retour");
 		btnNewButton.addActionListener(new AllerPage(this.a,11));
 		panel_1.add(btnNewButton);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		add(scrollPane, BorderLayout.CENTER);
+		
+		JPanel panel_2 = new JPanel();
+		scrollPane.setViewportView(panel_2);
 
 	}
 
