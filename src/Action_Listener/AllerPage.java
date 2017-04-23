@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import Interface_Graphique.AjouterEntreprise;
 import Interface_Graphique.AjouterOffre;
+import Interface_Graphique.AjouterUtilisateur;
 import Interface_Graphique.Connexion;
 import Interface_Graphique.ConnexionAdmin;
 import Interface_Graphique.ConnexionEnt;
@@ -82,7 +83,11 @@ public class AllerPage implements ActionListener {
 		if(b==13){
 			a.setContentPane(new ConnexionAdmin(this.a));
 		}
-		//14
+
+		if(b==14){
+			a.setContentPane(new AjouterUtilisateur(this.a));
+		}
+
 		a.repaint();
 		a.revalidate();
 	

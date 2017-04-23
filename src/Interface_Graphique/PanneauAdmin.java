@@ -74,10 +74,7 @@ public class PanneauAdmin extends JPanel {
 		add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		JButton btnNewButton_5 = new JButton("Ajouter");
-		btnNewButton_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		btnNewButton_5.addActionListener(new AllerPage(this.a,14));
 		GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();
 		gbc_btnNewButton_5.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton_5.insets = new Insets(0, 0, 5, 0);
