@@ -16,6 +16,8 @@ public class AjouterU implements ActionListener {
 	String mdp ;
 	int z ;
 	Inscription b;
+	
+	
 	public AjouterU(Application a , Inscription b)
 	{
 		this.a=a;

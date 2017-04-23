@@ -82,6 +82,7 @@ public class AllerPage implements ActionListener {
 		if(b==13){
 			a.setContentPane(new ConnexionAdmin(this.a));
 		}
+		//14
 		a.repaint();
 		a.revalidate();
 	

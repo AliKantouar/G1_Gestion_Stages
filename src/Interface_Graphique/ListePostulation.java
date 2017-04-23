@@ -55,12 +55,13 @@ public class ListePostulation extends JPanel {
 		add(panel_1, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Retour");
-		btnNewButton.addActionListener(new AllerPage(this.a,11));
+		btnNewButton.addActionListener(new AllerPage(this.a,11,user));
 		panel_1.add(btnNewButton);
 		
 		
-		
-		
+		JPanel panel2 = new JPanel();
+		panel2.setLayout(new BorderLayout(0, 0));
+		add(panel2, BorderLayout.CENTER);
 		
 		Pane = new JPanel();
 		GridBagLayout grille = new GridBagLayout();
@@ -83,16 +84,21 @@ public class ListePostulation extends JPanel {
 			z.setIcon(Ent);
 			Pane.add(z,gbc);
 			gbc.gridx++;
-		
+			Pane.add(new JButton("Accepter"),gbc);
+		//	Pane.add(new VoirCV("Voir CV",p.getUser()),gbc);
+			gbc.gridx++;
+			Pane.add(new JButton("Accepter"),gbc);
+			gbc.gridx++;
+			Pane.add(new JButton("Refuser"),gbc);
+			
 		}
 		
 		Pane.validate();
 		Pane.repaint();
 		
-		gbc.gridy=1;
-		gbc.gridx=0;
+		
 		JScrollPane scrollPane = new JScrollPane(Pane);
-		add(scrollPane, BorderLayout.CENTER);
+		panel2.add(scrollPane, BorderLayout.CENTER);
 	
 		
 		this.validate();

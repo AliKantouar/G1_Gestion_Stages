@@ -844,7 +844,7 @@ public static ArrayList<Postulation> listePostulation(String user) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Identifiant`, `Poste`, `Duree` FROM `offres` WHERE `NomEntreprise`=\""+user+"\" ";
+		String sql = "SELECT `Identifiant`,`NomEntreprise`, `Poste`, `Duree` FROM `postulation` WHERE `NomEntreprise`=\""+user+"\" ";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -870,6 +870,57 @@ public static ArrayList<Postulation> listePostulation(String user) {
 	}
 	
 	return list;
+}
+
+
+public static Utilisateur UtilisateurViaId(String id) {
+	// TODO Auto-generated method stub
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	boolean existe = false;
+	Utilisateur a=new Utilisateur();
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets` FROM `Utilisateur` WHERE `Identifiant`=\""+id+"\"";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+
+		
+
+			a=new Utilisateur(rs.getString("Identifiant"), rs.getString("Mdp"), rs.getString("Telephone"), rs.getString("Mail"), rs.getString("Adresse"), rs.getString("Nom"), rs.getString("Prenom"), rs.getString("Formation"), rs.getString("Competences"), rs.getString("Experience"), rs.getString("Interets"));
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return a;
 }
 
 	
