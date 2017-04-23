@@ -244,19 +244,16 @@ public static void initModifCV(modifCV modifCV) {
 
 			while (rs.next()) {
 				
-				System.out.println(rs.getString("user")+rs.getString("nom"));
 				
-				/*modifCV.getTextField().setText(rs.getString("prenom"));
-				if(rs.getString("prenom").equals(""))
-				{
-					System.out.println("pe");
-				}
-				modifCV.getTextField_1().setText(rs.getString("mail"));
-				modifCV.getTextField_2().setText(rs.getString("nom"));
-				modifCV.getTextField_3().setText(rs.getString("tel"));
-				modifCV.getTextField_4().setText(rs.getString("adr"));
-				modifCV.getTextArea().setText(rs.getString("descr"));
-				*/
+				modifCV.getTextField().setText(rs.getString("Prenom"));
+				modifCV.getTextField_1().setText(rs.getString("Mail"));
+				modifCV.getTextField_2().setText(rs.getString("Nom"));
+				modifCV.getTextField_3().setText(rs.getString("telephone"));
+				modifCV.getTextField_4().setText(rs.getString("Adresse"));
+				modifCV.getTextArea().setText(rs.getString("Formation"));
+				modifCV.validate();
+				modifCV.repaint();
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

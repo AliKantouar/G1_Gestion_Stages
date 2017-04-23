@@ -12,19 +12,21 @@ import Principal.Offres;
 public class AnnulerPostulation extends JButton implements ActionListener{
 
 	Offres o;
-	
+	ListeCv lc;
 	String user;
 	
-	public AnnulerPostulation(String nom, Offres offres, String user) {
+	public AnnulerPostulation(String nom, Offres offres, String user, ListeCv listeCv) {
 		this.setText(nom);
 		this.o=offres;
 		this.user=user;
 		this.addActionListener(this);
+		this.lc=listeCv;
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
 		
 		DemoJdbc.supprimerPostulation(user, o.getEnt(), o.poste(), o.getDur());
+	
 	}
 
 }

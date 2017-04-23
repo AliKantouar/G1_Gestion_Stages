@@ -13,6 +13,7 @@ import javax.swing.JTextPane;
 import Action_Listener.AllerPage;
 import Action_Listener.ModifierCV;
 import Principal.Application;
+import Principal.DemoJdbc;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
@@ -44,6 +45,7 @@ public class modifCV extends JPanel {
 	public modifCV(Application a,String user) {
 		this.a=a;
 		this.user=user;
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{450, 0};
 		gridBagLayout.rowHeights = new int[]{41, 226, 33, 0};
@@ -199,7 +201,7 @@ public class modifCV extends JPanel {
 		panel_1.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new AllerPage(this.a,7,user));
 	
-		
+		DemoJdbc.initModifCV(this);
 	/////	DemoJdbc.initModifCV(this);
 		
 	

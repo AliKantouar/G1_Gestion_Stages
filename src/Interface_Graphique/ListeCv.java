@@ -127,11 +127,9 @@ public class ListeCv extends JPanel {
 		JPanel panel_1 = new JPanel();
 		add(panel_1, BorderLayout.SOUTH);
 		
-		JButton btnNewButton = new JButton("Recherche");
+		JButton btnNewButton = new JButton("Rechercher/Actualiser");
 		panel_1.add(btnNewButton);
 		
-		JButton btnNewButton_2 = new JButton("Postuler");
-		panel_1.add(btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("Retour");
 		btnNewButton_1.addActionListener(new AllerPage(this.a,7,user));
@@ -326,8 +324,8 @@ public class ListeCv extends JPanel {
 		Pane.add(z,gbc);
 		gbc.gridx++;
 		if(DemoJdbc.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
-		{Pane.add(new Postuler("Postuler",offres.get(i),user),gbc);}
-		else{Pane.add(new AnnulerPostulation("Annuler",offres.get(i),user),gbc);}
+		{Pane.add(new Postuler("Postuler",offres.get(i),user,this),gbc);}
+		else{Pane.add(new AnnulerPostulation("Annuler",offres.get(i),user,this),gbc);}
 
 
 	}

@@ -14,14 +14,15 @@ public class Postuler extends JButton implements ActionListener{
 	
 	Offres o;
 	String user;
+	ListeCv lc;
 	
 	
-	
-	public Postuler(String nom, Offres offres, String user) {
+	public Postuler(String nom, Offres offres, String user, ListeCv listeCv) {
 		this.setText(nom);
 		this.o=offres;
 		this.user=user;
 		this.addActionListener(this);
+		this.lc=listeCv;
 	}
 
 	
