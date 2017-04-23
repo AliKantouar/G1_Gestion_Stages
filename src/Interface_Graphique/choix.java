@@ -54,7 +54,7 @@ public class choix extends JPanel {
 		this.add(btnNewButton_2, gbc_btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("ADMIN");
-		btnNewButton_1.addActionListener(new AllerPage(this.app,12));
+		btnNewButton_1.addActionListener(new AllerPage(this.app,13));
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);

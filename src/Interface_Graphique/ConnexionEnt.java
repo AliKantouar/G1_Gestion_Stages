@@ -59,7 +59,7 @@ public class ConnexionEnt extends JPanel {
 		
 		JButton btnNewButton_2 = new JButton("Se connecter");
 		panel.add(btnNewButton_2, BorderLayout.CENTER);
-		//btnNewButton_2.addActionListener();
+		btnNewButton_2.addActionListener(new ConnexionE(this.a,this));
 
 		JPanel panel_1 = new JPanel();
 		add(panel_1, BorderLayout.NORTH);
