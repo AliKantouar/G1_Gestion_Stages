@@ -36,7 +36,8 @@ public class AllerPage implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {		
+	public void actionPerformed(ActionEvent arg0) {	
+		a.setPreferredSize(new Dimension(400,300));
 		if(b==1){
 			a.setContentPane(new choix(this.a));
 		}
@@ -65,7 +66,12 @@ public class AllerPage implements ActionListener {
 		if(b==9){
 			a.setContentPane(new ListeCv(this.a,user));
 		}
-		
+		if(b==10){
+			a.setContentPane(new ConnexionEnt(this.a,user));
+		}
+		if(b==11){
+			a.setContentPane(new PanneauEnt(this.a,user));
+		}
 		a.repaint();
 		a.revalidate();
 	

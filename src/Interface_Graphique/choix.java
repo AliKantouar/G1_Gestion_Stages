@@ -37,16 +37,25 @@ public class choix extends JPanel {
 		
 		JButton btnNewButton = new JButton("USER");
 		btnNewButton.addActionListener(new AllerPage(this.app,5));
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 1;
 		gbc_btnNewButton.gridy = 1;
 		this.add(btnNewButton, gbc_btnNewButton);
 		
+		JButton btnNewButton_2 = new JButton("ENTREPRISE");
+		btnNewButton_2.addActionListener(new AllerPage(this.app,10));
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 15));
+		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_2.gridx = 2;
+		gbc_btnNewButton_2.gridy = 1;
+		this.add(btnNewButton_2, gbc_btnNewButton_2);
+		
 		JButton btnNewButton_1 = new JButton("ADMIN");
 		btnNewButton_1.addActionListener(new AllerPage(this.app,2));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 3;
@@ -60,6 +69,7 @@ public class choix extends JPanel {
 		gbc_panel_3.gridx = 4;
 		gbc_panel_3.gridy = 1;
 		this.add(panel_3, gbc_panel_3);
+		
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
