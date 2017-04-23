@@ -23,7 +23,10 @@ public class modifCV extends JPanel {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextArea textArea ;
+	private JTextArea textArea;
+	private JTextArea textArea_1;
+	private JTextArea textArea_2;
+	private JTextArea textArea_3;
 	String user;
 	public String getUser() {
 		return user;
@@ -75,9 +78,9 @@ public class modifCV extends JPanel {
 		add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0, 53, 0, 69, 0, 0, 0, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 46, 52, 70, 0, 0};
+		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nom :");
@@ -166,23 +169,71 @@ public class modifCV extends JPanel {
 		panel_2.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblDescriptio = new JLabel("Description :");
-		GridBagConstraints gbc_lblDescriptio = new GridBagConstraints();
-		gbc_lblDescriptio.anchor = GridBagConstraints.NORTHEAST;
-		gbc_lblDescriptio.insets = new Insets(0, 0, 0, 5);
-		gbc_lblDescriptio.gridx = 1;
-		gbc_lblDescriptio.gridy = 4;
-		panel_2.add(lblDescriptio, gbc_lblDescriptio);
+		JLabel lblFormation = new JLabel("Formation :");
+		GridBagConstraints gbc_lblFormation = new GridBagConstraints();
+		gbc_lblFormation.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFormation.gridx = 1;
+		gbc_lblFormation.gridy = 4;
+		panel_2.add(lblFormation, gbc_lblFormation);
 		
-		textArea = new JTextArea();
-		textArea.setLineWrap(true);
+		JTextArea textArea = new JTextArea();
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.gridwidth = 4;
-		gbc_textArea.insets = new Insets(0, 0, 0, 5);
+		gbc_textArea.gridwidth = 7;
+		gbc_textArea.insets = new Insets(0, 0, 5, 0);
 		gbc_textArea.fill = GridBagConstraints.BOTH;
 		gbc_textArea.gridx = 2;
 		gbc_textArea.gridy = 4;
 		panel_2.add(textArea, gbc_textArea);
+		
+		JLabel lblComptences = new JLabel("Comp\u00E9tences :");
+		GridBagConstraints gbc_lblComptences = new GridBagConstraints();
+		gbc_lblComptences.insets = new Insets(0, 0, 5, 5);
+		gbc_lblComptences.gridx = 1;
+		gbc_lblComptences.gridy = 5;
+		panel_2.add(lblComptences, gbc_lblComptences);
+		
+		JTextArea textArea_1 = new JTextArea();
+		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
+		gbc_textArea_1.gridwidth = 7;
+		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
+		gbc_textArea_1.fill = GridBagConstraints.BOTH;
+		gbc_textArea_1.gridx = 2;
+		gbc_textArea_1.gridy = 5;
+		panel_2.add(textArea_1, gbc_textArea_1);
+		
+		JLabel lblExprience = new JLabel("Exp\u00E9rience :");
+		GridBagConstraints gbc_lblExprience = new GridBagConstraints();
+		gbc_lblExprience.anchor = GridBagConstraints.EAST;
+		gbc_lblExprience.insets = new Insets(0, 0, 5, 5);
+		gbc_lblExprience.gridx = 1;
+		gbc_lblExprience.gridy = 6;
+		panel_2.add(lblExprience, gbc_lblExprience);
+		
+		JTextArea textArea_2 = new JTextArea();
+		GridBagConstraints gbc_textArea_2 = new GridBagConstraints();
+		gbc_textArea_2.gridwidth = 7;
+		gbc_textArea_2.insets = new Insets(0, 0, 5, 0);
+		gbc_textArea_2.fill = GridBagConstraints.BOTH;
+		gbc_textArea_2.gridx = 2;
+		gbc_textArea_2.gridy = 6;
+		panel_2.add(textArea_2, gbc_textArea_2);
+		
+		JLabel lblDescriptio = new JLabel("Interets:");
+		GridBagConstraints gbc_lblDescriptio = new GridBagConstraints();
+		gbc_lblDescriptio.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblDescriptio.insets = new Insets(0, 0, 0, 5);
+		gbc_lblDescriptio.gridx = 1;
+		gbc_lblDescriptio.gridy = 7;
+		panel_2.add(lblDescriptio, gbc_lblDescriptio);
+		
+		JTextArea textArea_3 = new JTextArea();
+		GridBagConstraints gbc_textArea_3 = new GridBagConstraints();
+		gbc_textArea_3.gridwidth = 7;
+		gbc_textArea_3.insets = new Insets(0, 0, 0, 5);
+		gbc_textArea_3.fill = GridBagConstraints.BOTH;
+		gbc_textArea_3.gridx = 2;
+		gbc_textArea_3.gridy = 7;
+		panel_2.add(textArea_3, gbc_textArea_3);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -219,6 +270,24 @@ public class modifCV extends JPanel {
 	public void setTextArea(JTextArea textArea) {
 		this.textArea = textArea;
 	}
+	public JTextArea getTextArea_1() {
+		return textArea_1;
+	}
+	public void setTextArea_1(JTextArea textArea) {
+		this.textArea = textArea_2;
+	}
+	public JTextArea getTextArea_2() {
+		return textArea_3;
+	}
+	public void setTextArea_2(JTextArea textArea) {
+		this.textArea = textArea;
+	}
+	public JTextArea getTextArea_3() {
+		return textArea;
+	}
+	public void setTextArea_3(JTextArea textArea) {
+		this.textArea = textArea;
+	}
 	public JTextField getTextField() {
 		return textField;
 	}
@@ -243,5 +312,4 @@ public class modifCV extends JPanel {
 	public void setTextField_3(JTextField textField_3) {
 		this.textField_3 = textField_3;
 	}
-
 }
