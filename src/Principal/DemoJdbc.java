@@ -765,6 +765,12 @@ public static void supprimerPostulation(String user, String ent, String poste, S
 	
 }
 
+
+public static boolean connexionE(String user, String mdp) {
+	// TODO Auto-generated method stub
+	return false;
+}
+
 	
 
 
