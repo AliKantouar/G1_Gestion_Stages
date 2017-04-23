@@ -11,6 +11,7 @@ import Interface_Graphique.Connexion;
 import Interface_Graphique.ConnexionEnt;
 import Interface_Graphique.Inscription;
 import Interface_Graphique.ListeCv;
+import Interface_Graphique.ListePostulation;
 import Interface_Graphique.PanneauAdmin;
 import Interface_Graphique.PanneauEnt;
 import Interface_Graphique.PanneauUser;
@@ -73,6 +74,9 @@ public class AllerPage implements ActionListener {
 		}
 		if(b==11){
 			a.setContentPane(new PanneauEnt(this.a,user));
+		}
+		if(b==12){
+			a.setContentPane(new ListePostulation(this.a,user));
 		}
 		a.repaint();
 		a.revalidate();

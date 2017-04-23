@@ -29,14 +29,15 @@ public class ConnexionE implements ActionListener {
 		this.user=c.getTextField().getText();
 		this.mdp=c.getTextField_1().getText();
 		//criptage du mot de passe
-		Md5 criptage=new Md5(mdp);
-		mdp=criptage.getCode();
+		
 		if(this.user.equals("")||this.mdp.equals(""))
 		{
 			Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
 		}
 		else
 		{
+			Md5 criptage=new Md5(mdp);
+			mdp=criptage.getCode();
 			if(DemoJdbc.connexionE(user,mdp))
 			{
 				a.setContentPane(new PanneauEnt(a,user));

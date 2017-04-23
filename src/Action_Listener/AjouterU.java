@@ -29,14 +29,15 @@ public class AjouterU implements ActionListener {
 		this.user=b.getTextField().getText();
 		this.mdp=b.getTextField_1().getText();
 		//criptage du mot de passe
-		Md5 criptage=new Md5(mdp);
-		mdp=criptage.getCode();
+		
 			
 		if(user.equals("")||mdp.equals("")||DemoJdbc.verifU(user, mdp)){
 			Erreur error=new Erreur("Ce nom d'utilisateur n'est pas disponible");
 		}
 		else
 		{
+			Md5 criptage=new Md5(mdp);
+			mdp=criptage.getCode();
 			DemoJdbc.Inscrire(user, mdp);
 			a.setContentPane(new Connexion(this.a));
 			a.repaint();
