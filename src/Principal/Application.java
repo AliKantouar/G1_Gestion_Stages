@@ -15,7 +15,7 @@ public class Application extends JFrame {
 	 choix choix = new choix();
 	 PanneauAdmin panneauA = new PanneauAdmin();
 	 DemoJdbc jd = new DemoJdbc();
-	 
+
 	 
 	public Application() {
 		this.setResizable(false);
