@@ -5,6 +5,7 @@ public class Postulation {
 	String user;
 	String Ent;
 	String Dur;
+	char etat;
 	public String getUser() {
 		return user;
 	}
@@ -48,13 +49,13 @@ public class Postulation {
 	String Pos;
 	
 	
-		public Postulation(String user,String Ent,String Dur,String Pos)
+		public Postulation(String user,String Ent,String Dur,String Pos,char etat)
 		{
 			this.user=user;
 			this.Ent=Ent;
 			this.Dur=Dur;
 			this.Pos=Pos;
-		
+			this.etat=etat;
 		}
 
 

@@ -844,7 +844,7 @@ public static ArrayList<Postulation> listePostulation(String user) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Identifiant`,`NomEntreprise`, `Poste`, `Duree` FROM `postulation` WHERE `NomEntreprise`=\""+user+"\" ";
+		String sql = "SELECT `Identifiant`,`NomEntreprise`, `Poste`, `Duree`, `Etat` FROM `postulation` WHERE `NomEntreprise`=\""+user+"\" ";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
@@ -852,7 +852,7 @@ public static ArrayList<Postulation> listePostulation(String user) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste")));
+			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste"),rs.getString("Etat")));
 					
 		}
 	} catch (SQLException e) {
