@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Interface_Graphique.Connexion;
+import Interface_Graphique.ConnexionEnt;
 import Interface_Graphique.Erreur;
 import Interface_Graphique.PanneauEnt;
 import Interface_Graphique.PanneauUser;
@@ -13,10 +14,10 @@ import Principal.Md5;
 public class ConnexionE implements ActionListener {
 
 	Application a;
-	Connexion c;
+	ConnexionEnt c;
 	String user;
 	String mdp;
-	public ConnexionE(Application a , Connexion c)
+	public ConnexionE(Application a , ConnexionEnt c)
 	{
 		this.a=a;
 		this.c=c;
