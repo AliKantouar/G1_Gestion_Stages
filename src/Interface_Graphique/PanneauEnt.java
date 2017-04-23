@@ -65,7 +65,7 @@ public class PanneauEnt extends Container {
 		gbc_panel_2.gridy = 3;
 		add(panel_2, gbc_panel_2);
 		
-		JButton btnNewButton_1 = new JButton("Ajout/Modification du CV");
+		JButton btnNewButton_1 = new JButton("Modifier entreprise");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 	//	btnNewButton_1.addActionListener(new AllerPage(this.a,8,user));
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();

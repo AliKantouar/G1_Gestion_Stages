@@ -16,6 +16,22 @@ public class Postulation {
 			this.Pos=Pos;
 		
 		}
+
+
+		public String AfficherS() {
+			// TODO Auto-generated method stub
+			String nom ;
+			
+			nom=chercher(user);
+			
+			return("Nom Candidat : " + nom);
+		}
+
+
+		private String chercher(String user2) {
+			// TODO Auto-generated method stub
+			return user+" "+Pos+" "+Dur;
+		}
 		
 		
 

@@ -820,6 +820,58 @@ public static boolean connexionE(String user, String mdp) {
 	return existe;
 }
 
+
+public static ArrayList<Postulation> listePostulation(String user) {
+	// TODO Auto-generated method stub
+	
+	
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	ArrayList<Postulation> list = new ArrayList<Postulation>();
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Identifiant`, `Poste`, `Duree` FROM `offres` WHERE `NomEntreprise`=\""+user+"\" ";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste")));
+					
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	return list;
+}
+
 	
 
 
