@@ -314,7 +314,7 @@ public class ListeCv extends JPanel {
 		gbc.gridy=0;
 		Icon Ent = new ImageIcon("ressources/Ent.png"); 
 	
-	System.out.println(offres.size());
+	
 	for(int i = 0;i<offres.size();i++)
 	{
 		gbc.gridy=i;
@@ -325,7 +325,11 @@ public class ListeCv extends JPanel {
 		z.setIcon(Ent);
 		Pane.add(z,gbc);
 		gbc.gridx++;
-		Pane.add(new JRadioButton(""),gbc);
+		if(DemoJdbc.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
+		{Pane.add(new Postuler("Postuler",offres.get(i),user),gbc);}
+		else{Pane.add(new AnnulerPostulation("Postuler",offres.get(i),user),gbc);}
+
+
 	}
 	Pane.validate();
 	Pane.repaint();
