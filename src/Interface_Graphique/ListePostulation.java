@@ -86,11 +86,18 @@ public class ListePostulation extends JPanel {
 			gbc.gridx++;
 		//	Pane.add(new JButton("Accepter"),gbc);
 			Pane.add(new VoirCV("Voir CV",p.getUser()),gbc);
-			gbc.gridx++;
-			Pane.add(new AccepterPostulation("Accepter",p),gbc);
-			gbc.gridx++;
-			Pane.add(new JButton("Refuser"),gbc);
-			
+			if(p.getEtat()=='F'||p.getEtat()=='A')
+			{
+				gbc.gridx++;
+				Pane.add(new AccepterPostulation("Accepter",p),gbc);
+			}
+			if(p.getEtat()!='F')
+			{
+
+				gbc.gridx++;
+				Pane.add(new RefuserPostulation("Refuser",p),gbc);
+					
+			}
 		}
 		
 		Pane.validate();

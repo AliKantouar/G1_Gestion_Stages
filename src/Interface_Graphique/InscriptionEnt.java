@@ -1,10 +1,5 @@
 package Interface_Graphique;
-<<<<<<< HEAD
 
-public class InscriptionEnt {
-
-}
-=======
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
@@ -216,5 +211,4 @@ public class InscriptionEnt extends JPanel {
 
 
 	
-	}
->>>>>>> origin/master
+}

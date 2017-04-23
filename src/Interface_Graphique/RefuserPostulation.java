@@ -17,6 +17,7 @@ public class RefuserPostulation extends JButton implements ActionListener {
 	
 	public RefuserPostulation(String string, Postulation p)
 	{
+		this.p=p;
 		this.setText(string);
 		this.addActionListener(this);
 	}

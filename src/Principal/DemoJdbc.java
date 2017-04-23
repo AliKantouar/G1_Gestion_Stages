@@ -852,7 +852,7 @@ public static ArrayList<Postulation> listePostulation(String user) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste"),Character.rs.getString("Etat")));
+			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste"),rs.getString("Etat").charAt(0)));
 					
 		}
 	} catch (SQLException e) {
@@ -938,12 +938,21 @@ public static void modifPostulation(Postulation p,boolean etat) {
 		if(etat)
 		{
 			sql ="UPDATE `postulation` SET `Etat`=\""+"T"+"\" WHERE Identifiant=\""+p.user+"\" AND `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\"";
-			SoustrairePlace(p);
+			
+			if(!etaitaccepter(p))
+			{
+				SoustrairePlace(p);
+					
+			}
+						
 		}
 		else
 		{
 			sql ="UPDATE `postulation` SET `Etat`=\""+"F"+"\" WHERE Identifiant=\""+p.user+"\" AND `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\"";
-			
+			if(etaitaccepter(p))
+			{
+				IncrePlace(p);	
+			}
 		}
 		
 		st.executeUpdate(sql);
@@ -969,6 +978,95 @@ public static void modifPostulation(Postulation p,boolean etat) {
 }
 
 
+private static boolean etaitaccepter(Postulation p) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	boolean etaitaccepter = false;
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Identifiant`, `NomEntreprise`, `Duree`, `Poste`, `Etat` FROM `postulation` WHERE `Identifiant`=\""+p.user+"\" AND `NomEntreprise`=\""+p.Ent+"\" AND `Duree`=\""+p.Dur+"\" AND `Poste`=\""+p.Pos+"\"";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			if(rs.getString("Etat").equals("T"))
+			{
+				etaitaccepter = true;
+			}
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	return etaitaccepter;
+}
+
+
+
+private static void IncrePlace(Postulation p) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql  ="UPDATE `Offres` SET `Places`=\""+(NombrePlaces(p)+1)+"\" WHERE `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\" AND `Duree`=\""+p.Dur+"\"";
+			
+		
+		
+		st.executeUpdate(sql);
+		
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+}
+
+
 private static void SoustrairePlace(Postulation p) {
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
@@ -980,7 +1078,7 @@ private static void SoustrairePlace(Postulation p) {
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
 		
-		String sql  ="UPDATE `Offres` SET `Places`=\""+NombrePlaces(p)+"\" WHERE `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\" AND `Duree`=\""+p.Dur+"\"";
+		String sql  ="UPDATE `Offres` SET `Places`=\""+(NombrePlaces(p)-1)+"\" WHERE `NomEntreprise`=\""+p.Ent+"\" AND `Poste`=\""+p.Pos+"\" AND `Duree`=\""+p.Dur+"\"";
 			
 		
 		

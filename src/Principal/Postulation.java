@@ -71,7 +71,17 @@ public class Postulation {
 
 		private String chercher(String user2) {
 			// TODO Auto-generated method stub
-			return user+" "+Pos+" "+Dur;
+			return user+" "+Pos+" "+Dur+" "+etat;
+		}
+
+
+		public char getEtat() {
+			return etat;
+		}
+
+
+		public void setEtat(char etat) {
+			this.etat = etat;
 		}
 		
 		
