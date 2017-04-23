@@ -852,7 +852,7 @@ public static ArrayList<Postulation> listePostulation(String user) {
 		// Si récup données alors étapes 5 (parcours Resultset)
 
 		while (rs.next()) {
-			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste"),rs.getString("Etat")));
+			list.add(new Postulation(rs.getString("Identifiant"),rs.getString("NomEntreprise"),rs.getString("Duree"),rs.getString("Poste"),Character.rs.getString("Etat")));
 					
 		}
 	} catch (SQLException e) {
