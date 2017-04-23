@@ -50,7 +50,7 @@ public class ConnexionEnt extends JPanel {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JButton btnNewButton_1 = new JButton("Crée entreprise");
-		btnNewButton_1.addActionListener(new AllerPage(this.a,6));
+		btnNewButton_1.addActionListener(new AllerPage(this.a,3));
 		panel.add(btnNewButton_1, BorderLayout.WEST);
 		
 		JButton btnNewButton = new JButton("Retour");
