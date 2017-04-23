@@ -327,7 +327,7 @@ public class ListeCv extends JPanel {
 		gbc.gridx++;
 		if(DemoJdbc.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
 		{Pane.add(new Postuler("Postuler",offres.get(i),user),gbc);}
-		else{Pane.add(new AnnulerPostulation("Postuler",offres.get(i),user),gbc);}
+		else{Pane.add(new AnnulerPostulation("Annuler",offres.get(i),user),gbc);}
 
 
 	}

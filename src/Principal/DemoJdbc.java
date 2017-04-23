@@ -733,6 +733,41 @@ public static boolean premierPostulation(String user, String ent, String poste, 
 	return first;
 }
 
+
+public static void supprimerPostulation(String user, String ent, String poste, String dur) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "DELETE FROM `postulation` WHERE `Identifiant`=\""+user+"\" AND `NomEntreprise`=\""+ent+"\" AND `Poste`=\""+poste+"\" AND `Duree`=\""+dur+"\"";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+	
+}
+
 	
 
 
