@@ -49,6 +49,7 @@ public class Utilisateur {
 
 	public String afficher()
 	{
+		return "<html><u><b>Identifiant</u></b> : "+this.id+" <u><b>Nom</u></b> : "+this.nom+" <u><b>Prenom</u></b> : "+this.prenom+"<br><u><b>Mail</u></b> :"+this.mail+"<u><b>Telephonne</u></b> :"+this.tel+"</html>";
 	}
 
 	public String getId() {
