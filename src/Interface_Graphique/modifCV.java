@@ -15,7 +15,7 @@ import javax.swing.JTextPane;
 import Action_Listener.AllerPage;
 import Action_Listener.ModifierCV;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
@@ -274,7 +274,7 @@ public class modifCV extends JPanel {
 		panel_1.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new AllerPage(this.a,7,user));
 	
-		DemoJdbc.initModifCV(this);
+		DAO.initModifCV(this);
 		
 	
 	

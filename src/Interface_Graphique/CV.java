@@ -8,7 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Utilisateur;
 
 import javax.swing.JLabel;
@@ -25,7 +25,7 @@ public class CV extends JDialog implements ActionListener{
 	public CV(String user) {
 		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		Utilisateur a = DemoJdbc.UtilisateurViaId(user);
+		Utilisateur a = DAO.UtilisateurViaId(user);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		{

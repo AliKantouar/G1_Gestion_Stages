@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import Interface_Graphique.PanneauUser;
 import Interface_Graphique.modifCV;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 
 public class ModifierCV implements ActionListener {
 
@@ -120,7 +120,7 @@ public class ModifierCV implements ActionListener {
 		this.descr=this.m.getTextArea().getText();
 		this.adr=this.m.getTextField_4().getText();
 		
-		DemoJdbc.modifierCV(user,nom,prenom,tel,adr,mail,form,comp,exp,inte);
+		DAO.modifierCV(user,nom,prenom,tel,adr,mail,form,comp,exp,inte);
 		
 		a.setContentPane(new PanneauUser(this.a,user));
 		a.repaint();

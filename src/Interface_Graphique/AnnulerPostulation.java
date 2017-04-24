@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Offres;
 
 public class AnnulerPostulation extends JButton implements ActionListener{
@@ -25,7 +25,7 @@ public class AnnulerPostulation extends JButton implements ActionListener{
 	
 	public void actionPerformed(ActionEvent arg0) {
 		
-		DemoJdbc.supprimerPostulation(user, o.getEnt(), o.poste(), o.getDur());
+		DAO.supprimerPostulation(user, o.getEnt(), o.poste(), o.getDur());
 	
 	}
 

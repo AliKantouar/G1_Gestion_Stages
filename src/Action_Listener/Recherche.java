@@ -14,7 +14,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
 import Interface_Graphique.ListeCv;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Offres;
 
 public class Recherche implements ActionListener {
@@ -94,9 +94,9 @@ public class Recherche implements ActionListener {
 				else
 				{
 					faire=false;
-					this.lcv.setNbr(DemoJdbc.listeO().size());
+					this.lcv.setNbr(DAO.listeO().size());
 					this.lcv.getPanel_2().remove(this.lcv.getScrollPane());
-					this.lcv.afficherliste(DemoJdbc.listeO());
+					this.lcv.afficherliste(DAO.listeO());
 				}
 
 			}
@@ -113,7 +113,7 @@ public class Recherche implements ActionListener {
 
 	private ArrayList<Offres> Recherchep() {
 		// TODO Auto-generated method stub
-	ArrayList<Offres> offres = DemoJdbc.listeO();
+	ArrayList<Offres> offres = DAO.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
 			
@@ -132,7 +132,7 @@ public class Recherche implements ActionListener {
 	private ArrayList<Offres> Recherched() {
 		// TODO Auto-generated method stub
 		
-		ArrayList<Offres> offres = DemoJdbc.listeO();
+		ArrayList<Offres> offres = DAO.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
 			if(this.lcv.getTextField().getText().toString().equals("")&&this.lcv.getTextField_1().getText().toString().equals("")){
@@ -182,7 +182,7 @@ public class Recherche implements ActionListener {
 
 	private ArrayList<Offres> Recherchee() {
 		// TODO Auto-generated method stub
-		ArrayList<Offres> offres = DemoJdbc.listeO();
+		ArrayList<Offres> offres = DAO.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
 			if(!offres.get(i).getEnt().equals(this.lcv.getComboBox().getSelectedItem().toString()))

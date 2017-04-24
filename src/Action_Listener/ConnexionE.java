@@ -8,7 +8,7 @@ import Interface_Graphique.Erreur;
 import Interface_Graphique.PanneauEnt;
 import Interface_Graphique.PanneauUser;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Md5;
 
 public class ConnexionE implements ActionListener {
@@ -38,7 +38,7 @@ public class ConnexionE implements ActionListener {
 		{
 			Md5 criptage=new Md5(mdp);
 			mdp=criptage.getCode();
-			if(DemoJdbc.connexionE(user,mdp))
+			if(DAO.connexionE(user,mdp))
 			{
 				a.setContentPane(new PanneauEnt(a,user));
 				a.repaint();

@@ -6,7 +6,7 @@ import Interface_Graphique.AjouterOffre;
 import Interface_Graphique.AjouterOffreE;
 import Interface_Graphique.Erreur;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 
 public class AjouterO implements ActionListener {
 
@@ -46,9 +46,9 @@ public class AjouterO implements ActionListener {
 		this.poste=this.aj.getTextField().getText();
 		this.pla=this.aj.getTextField_2().getText();
 		//a modifier/creer
-		if(!DemoJdbc.verifO(entreprise,poste))
+		if(!DAO.verifO(entreprise,poste))
 		{
-			DemoJdbc.ajouterO(entreprise,dur,poste,pla);
+			DAO.ajouterO(entreprise,dur,poste,pla);
 		}
 		else
 		{
@@ -68,9 +68,9 @@ public class AjouterO implements ActionListener {
 			this.poste=this.ajE.getTextField().getText();
 			this.pla=this.ajE.getTextField_2().getText();
 			//a modifier/creer
-			if(!DemoJdbc.verifO(entreprise,poste))
+			if(!DAO.verifO(entreprise,poste))
 			{
-				DemoJdbc.ajouterO(entreprise,dur,poste,pla);
+				DAO.ajouterO(entreprise,dur,poste,pla);
 			}
 			else
 			{

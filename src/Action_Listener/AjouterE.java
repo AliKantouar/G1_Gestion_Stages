@@ -7,7 +7,7 @@ import Interface_Graphique.ConnexionEnt;
 import Interface_Graphique.Erreur;
 import Interface_Graphique.InscriptionEnt;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Md5;
 
 public class AjouterE implements ActionListener {
@@ -54,11 +54,11 @@ public class AjouterE implements ActionListener {
 		}
 		
 		
-		if(!mdp.equals("")&&!DemoJdbc.verifE(nom))
+		if(!mdp.equals("")&&!DAO.verifE(nom))
 		{
 			Md5 criptage=new Md5(mdp);
 			mdp=criptage.getCode();
-			DemoJdbc.ajouterE(nom,mdp,adr,tel,com);
+			DAO.ajouterE(nom,mdp,adr,tel,com);
 		}
 		else
 		{

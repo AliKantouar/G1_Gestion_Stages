@@ -6,7 +6,7 @@ import Interface_Graphique.Connexion;
 import Interface_Graphique.Erreur;
 import Interface_Graphique.PanneauUser;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Md5;
 
 public class ConnexionU implements ActionListener {
@@ -36,7 +36,7 @@ public class ConnexionU implements ActionListener {
 		{
 			Md5 criptage=new Md5(mdp);
 			mdp=criptage.getCode();
-			if(DemoJdbc.verifU(user,mdp))
+			if(DAO.verifU(user,mdp))
 			{
 				a.setContentPane(new PanneauUser(this.a,user));
 				a.repaint();

@@ -9,7 +9,7 @@ import Interface_Graphique.PanneauAdmin;
 import Interface_Graphique.PanneauEnt;
 import Interface_Graphique.PanneauUser;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Md5;
 
 public class ConnexionA implements ActionListener {

@@ -8,7 +8,7 @@ import Interface_Graphique.PanneauUser;
 import Interface_Graphique.modifCV;
 import Interface_Graphique.modifEnt;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 
 public class ModifierEntreprise implements ActionListener {
 
@@ -34,7 +34,7 @@ public class ModifierEntreprise implements ActionListener {
 		this.com=this.m.getTextArea().getText();
 		this.adr=this.m.getTextField_1().getText();
 		
-		DemoJdbc.modifierEnt(user,tel,adr,com);
+		DAO.modifierEnt(user,tel,adr,com);
 		
 		a.setContentPane(new PanneauEnt(this.a,user));
 		a.repaint();

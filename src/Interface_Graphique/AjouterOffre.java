@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import Action_Listener.AjouterO;
 import Action_Listener.AllerPage;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 
 
 public class AjouterOffre extends JPanel {
@@ -159,7 +159,7 @@ public class AjouterOffre extends JPanel {
 
 	private ArrayList<String> ListeEntreprises() {
 		// TODO Auto-generated method stub
-		return DemoJdbc.liste();
+		return DAO.liste();
 	}
 
 

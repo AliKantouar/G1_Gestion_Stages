@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Postulation;
 
 public class RefuserPostulation extends JButton implements ActionListener {
@@ -25,7 +25,7 @@ public class RefuserPostulation extends JButton implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		DemoJdbc.modifPostulation(p,false);
+		DAO.modifPostulation(p,false);
 	}
 
 }

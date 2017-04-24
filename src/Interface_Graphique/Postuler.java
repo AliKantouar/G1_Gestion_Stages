@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Offres;
 
 public class Postuler extends JButton implements ActionListener{
@@ -28,7 +28,7 @@ public class Postuler extends JButton implements ActionListener{
 	
 	public void actionPerformed(ActionEvent arg0) {
 		
-		DemoJdbc.ajouterPostulation(user, o.getEnt(), o.poste(), o.getDur());
+		DAO.ajouterPostulation(user, o.getEnt(), o.poste(), o.getDur());
 		
 	}
 	

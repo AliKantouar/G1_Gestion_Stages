@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DemoJdbc {
+public class DAO {
 
 
 //Crée une nouvelle ligne dans le tableau "cv" dans la Base de donnée

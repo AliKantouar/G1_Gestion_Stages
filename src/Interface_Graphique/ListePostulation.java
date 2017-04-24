@@ -4,7 +4,7 @@ import javax.swing.JPanel;
 
 import Action_Listener.AllerPage;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Offres;
 import Principal.Postulation;
 
@@ -71,7 +71,7 @@ public class ListePostulation extends JPanel {
 		Pane.setLayout(grille);
 		gbc.gridy=0;
 		Icon Ent = new ImageIcon("ressources/Ent.png"); 
-		ArrayList<Postulation> postulations = DemoJdbc.listePostulation(user);
+		ArrayList<Postulation> postulations = DAO.listePostulation(user);
 		
 		for(int i = 0;i<postulations.size();i++)
 		{

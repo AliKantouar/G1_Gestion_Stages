@@ -19,7 +19,7 @@ import Action_Listener.AllerPage;
 import Action_Listener.ModifierCV;
 import Action_Listener.ModifierEntreprise;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 
 import javax.swing.JTextArea;
 
@@ -129,7 +129,7 @@ public class modifEnt extends JPanel {
 		gbc_textArea.gridy = 3;
 		panel_2.add(textArea, gbc_textArea);
 		
-		DemoJdbc.initModifEnt(this);
+		DAO.initModifEnt(this);
 		
 	}
 

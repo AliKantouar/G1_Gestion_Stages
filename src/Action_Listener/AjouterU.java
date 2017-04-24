@@ -8,7 +8,7 @@ import Interface_Graphique.Connexion;
 import Interface_Graphique.Erreur;
 import Interface_Graphique.Inscription;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Md5;
 
 public class AjouterU implements ActionListener {
@@ -51,14 +51,14 @@ public class AjouterU implements ActionListener {
 		Md5 criptage=new Md5(mdp);
 		mdp=criptage.getCode();
 			
-		if(user.equals("")||mdp.equals("")||DemoJdbc.verifU(user, mdp)){
+		if(user.equals("")||mdp.equals("")||DAO.verifU(user, mdp)){
 			Erreur error=new Erreur("Ce nom d'utilisateur n'est pas disponible");
 		}
 		else
 		{		
 			//criptage du mot de passe
 			
-			DemoJdbc.Inscrire(user, mdp);
+			DAO.Inscrire(user, mdp);
 			
 			//difference entre admin et utilisateur
 			if(b!=null){

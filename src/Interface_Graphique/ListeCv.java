@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import Action_Listener.AllerPage;
 import Action_Listener.Recherche;
 import Principal.Application;
-import Principal.DemoJdbc;
+import Principal.DAO;
 import Principal.Offres;
 import Principal.Postulation;
 
@@ -43,7 +43,7 @@ public class ListeCv extends JPanel {
 	JPanel panel_2;
 	JScrollPane scrollPane;
 	JComboBox comboBox;
-	private int nbr = DemoJdbc.listeO().size();
+	private int nbr = DAO.listeO().size();
 	
 	
 	public JComboBox getComboBox() {
@@ -173,7 +173,7 @@ public class ListeCv extends JPanel {
 		gbc_lblNewLabel_1.gridy = 0;
 		panel_4.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
-		ArrayList<String> listE=DemoJdbc.liste();
+		ArrayList<String> listE=DAO.liste();
 		String[] liste = new String[listE.size()];
 		for(int j=0;j<listE.size();j++)
 		{
@@ -235,7 +235,7 @@ public class ListeCv extends JPanel {
 		panel_4.add(lblPoste, gbc_lblPoste);
 	
 		
-		ArrayList<String> listEo=DemoJdbc.listeP();
+		ArrayList<String> listEo=DAO.listeP();
 		
 		String[] listeo = new String[listEo.size()];
 		for(int j=0;j<listEo.size();j++)
@@ -326,7 +326,7 @@ public class ListeCv extends JPanel {
 		z.setIcon(Ent);
 		Pane.add(z,gbc);
 		gbc.gridx++;
-		if(DemoJdbc.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
+		if(DAO.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
 		{Pane.add(new Postuler("Postuler",offres.get(i),user,this),gbc);}
 		else{
 			
@@ -338,7 +338,7 @@ public class ListeCv extends JPanel {
 				y.setIcon(fait);
 				Pane.add(y,gbc);
 				gbc.gridx++;
-				JLabel w =new JLabel("Tel :"+DemoJdbc.numeroEntreprise(o));
+				JLabel w =new JLabel("Tel :"+DAO.numeroEntreprise(o));
 				w.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
 				Pane.add(w,gbc);
 			
@@ -392,7 +392,7 @@ public class ListeCv extends JPanel {
 
 	private char etat(Offres o, String user2) {
 		// TODO Auto-generated method stub
-		ArrayList<Postulation> liste = DemoJdbc.listePostulationViaUtilisateur(user2);
+		ArrayList<Postulation> liste = DAO.listePostulationViaUtilisateur(user2);
 		
 		for(int i = 0;i<liste.size();i++)
 		{
@@ -427,12 +427,12 @@ public class ListeCv extends JPanel {
 
 	private ArrayList<Offres> ListeOffres() {
 		// TODO Auto-generated method stub
-		return DemoJdbc.listeO();
+		return DAO.listeO();
 	}
 
 	private ArrayList<String> ListeEntreprises() {
 		// TODO Auto-generated method stub
-		return DemoJdbc.liste();
+		return DAO.liste();
 	}
 
 
