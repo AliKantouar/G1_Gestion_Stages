@@ -1,0 +1,15 @@
+Le mot de passe Admin est: 123soleil
+
+Logins et mots de passes de l'exemple de base de donne:
+
+-Il y a 4 Utilisateurs (étudiants)
+	Nom		Identifiant	Mot de passe
+	Bruno		Bruno		azerty
+	Sophie		Soso		1996
+	Sofia		Soso77		bobby
+	Jack		MisterPirate	balckflag
+
+-Il y a 2 Entreprises
+	Nom		Mot de Passe
+	Google		givememoney
+	Ikea		splouf

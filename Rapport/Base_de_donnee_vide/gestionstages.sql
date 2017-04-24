@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 23 Avril 2017 à 22:23
+-- Généré le :  Lun 24 Avril 2017 à 19:35
 -- Version du serveur :  5.7.14
 -- Version de PHP :  5.6.25
 
@@ -30,7 +30,7 @@ CREATE TABLE `entreprises` (
   `NomEntreprise` varchar(30) NOT NULL,
   `Mdp` varchar(600) NOT NULL,
   `Adresse` varchar(60) NOT NULL,
-  `Telephone` varchar(10) NOT NULL,
+  `Telephone` varchar(30) NOT NULL,
   `Commentaire` varchar(600) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -70,7 +70,7 @@ CREATE TABLE `postulation` (
 CREATE TABLE `utilisateur` (
   `Identifiant` varchar(30) NOT NULL,
   `Mdp` varchar(600) NOT NULL,
-  `Telephone` varchar(10) NOT NULL,
+  `Telephone` varchar(30) NOT NULL,
   `Mail` varchar(30) NOT NULL,
   `Adresse` varchar(60) NOT NULL,
   `Nom` varchar(30) NOT NULL,
