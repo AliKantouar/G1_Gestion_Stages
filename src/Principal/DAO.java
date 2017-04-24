@@ -759,7 +759,7 @@ public static void ajouterO(String entreprise, String dur, String poste, String 
 		String sql = "INSERT INTO `offres`(`NomEntreprise`, `Duree`, `Poste`, `Places`) VALUES ('"+entreprise+"','"+dur+"','"+poste+"','"+pla+"')";
 		if(Integer.parseInt(pla)<=0)
 		{
-			Erreur a = new Erreur("Places incorects");
+			Erreur a = new Erreur("Places incorrects");
 		}
 		else
 		{
