@@ -1,5 +1,7 @@
 package Interface_Graphique;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -97,7 +99,7 @@ public class ConnexionAdmin extends JPanel {
 		gbc_lblNewLabel_2.gridy = 3;
 		panel_2.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JPasswordField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;

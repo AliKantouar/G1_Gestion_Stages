@@ -1,5 +1,7 @@
 package Interface_Graphique;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -103,7 +105,7 @@ public class Inscription extends JPanel {
 		gbc_label_1.gridy = 3;
 		panel_2.add(label_1, gbc_label_1);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JPasswordField();
 		textField_1.setColumns(10);
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;

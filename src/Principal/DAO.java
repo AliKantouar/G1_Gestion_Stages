@@ -25,7 +25,7 @@ public static void Inscrire(String user,String mdp) {
 		Class.forName("com.mysql.jdbc.Driver");
 		cn = DriverManager.getConnection(url,login,passwd);
 		st= cn.createStatement();
-		System.out.println(mdp);
+		
 		
 		String sql = "INSERT INTO `Utilisateur` (`Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets`) VALUES ('"+user+"', '"+mdp+"', '', '', '', '', '', '', '', '', '');";
 		
@@ -560,10 +560,7 @@ public static ArrayList<Offres> listeO() {
 			e.printStackTrace();
 		}
 	}
-	for(int i = 0;i<list.size();i++)
-	{
-		list.get(i).Afficher();
-	}
+	
 	return list;
 }
 
@@ -797,7 +794,7 @@ public static void ajouterPostulation(String user, String ent, String poste, Str
 	// TODO Auto-generated method stub
 	if(premierPostulation(user,ent,poste,dur))
 	{
-		System.out.println("premiere");
+		
 		String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 		String login = "root";
 		String passwd = "";
@@ -828,10 +825,7 @@ public static void ajouterPostulation(String user, String ent, String poste, Str
 					}
 				}
 	}
-	else
-	{
-		System.out.println("Deja postuler");
-	}
+	
 
 }
 

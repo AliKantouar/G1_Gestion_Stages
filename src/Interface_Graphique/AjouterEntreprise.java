@@ -1,5 +1,7 @@
 package Interface_Graphique;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -134,7 +136,7 @@ public class AjouterEntreprise extends JPanel {
 		gbc_lblChef.gridy = 2;
 		panel_2.add(lblChef, gbc_lblChef);
 		
-		textField_1 = new JTextField();
+		textField_1 = new JPasswordField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
