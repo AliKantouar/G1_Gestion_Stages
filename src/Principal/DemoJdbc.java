@@ -3,6 +3,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Interface_Graphique.modifCV;
+import Interface_Graphique.modifEnt;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -279,6 +280,9 @@ public static void initModifCV(modifCV modifCV) {
 	}
 
 //Crée une nouvelle ligne dans le tableau "entreprises" dans la Base de donnée
+
+
+
 public static void ajouterE(String nom,String mdp, String adr, String tel, String com) {
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
@@ -370,6 +374,95 @@ public static boolean verifE(String nom) {
 	}
 	return existe;
 }
+
+public static void modifierEnt(String user ,String tel,String adr,String com) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql ="UPDATE `Entreprises` SET `Adresse`=\""+adr+"\",`Telephone`=\""+tel+"\",`Commentaire`=\""+com+"\" WHERE NomEntreprise=\""+user+"\"";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+	
+	
+}
+
+
+public static void initModifEnt(modifEnt modifEnt) {
+
+		// Information d'accès à la base de données
+		String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+		String login = "root";
+		String passwd = "";
+		Connection cn =null;
+		Statement st =null;
+		ResultSet rs =null;
+		
+		try {
+
+			// Etape 1 : Chargement du driver
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Etape 2 : récupération de la connexion
+			cn = DriverManager.getConnection(url, login, passwd);
+
+			// Etape 3 : Création d'un statement
+			st = cn.createStatement();
+
+			String sql = "SELECT `Adresse`, `Telephone`, `Commentaire` FROM `Entreprises` WHERE `NomEntreprise`=\""+modifEnt.getUser()+"\"";
+
+			// Etape 4 : exécution requête
+			rs = st.executeQuery(sql);
+
+			// Si récup données alors étapes 5 (parcours Resultset)
+
+			while (rs.next()) {
+				
+				
+				modifEnt.getTextField().setText(rs.getString("Telephone"));
+				modifEnt.getTextField_1().setText(rs.getString("Adresse"));
+				modifEnt.getTextArea().setText(rs.getString("Commentaire"));
+				modifEnt.validate();
+				modifEnt.repaint();
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+			// Etape 6 : libérer ressources de la mémoire.
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 
 //liste des noms des entreprises
@@ -1217,6 +1310,7 @@ private static int NombrePlaces(Postulation p) {
 }
 
 
+<<<<<<< HEAD
 public static String numeroEntreprise(Offres o) {
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
@@ -1265,6 +1359,9 @@ public static String numeroEntreprise(Offres o) {
 	return num;
 	
 }
+=======
+
+>>>>>>> origin/master
 
 	
 

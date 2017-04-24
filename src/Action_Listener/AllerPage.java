@@ -21,6 +21,7 @@ import Interface_Graphique.PanneauEnt;
 import Interface_Graphique.PanneauUser;
 import Interface_Graphique.choix;
 import Interface_Graphique.modifCV;
+import Interface_Graphique.modifEnt;
 import Principal.Application;
 
 public class AllerPage implements ActionListener {
@@ -94,6 +95,9 @@ public class AllerPage implements ActionListener {
 		}
 		if(b==16){
 			a.setContentPane(new AjouterOffreE(this.a,user));
+		}
+		if(b==17){
+			a.setContentPane(new modifEnt(this.a,user));
 		}
 		a.repaint();
 		a.revalidate();
