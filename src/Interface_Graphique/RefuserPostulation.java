@@ -57,7 +57,7 @@ public class RefuserPostulation extends JButton implements ActionListener {
 		gbc.insets=new Insets(10,10,10,10);
 		Pane.setLayout(grille);
 		gbc.gridy=0;
-		Ent = new ImageIcon("ressources/Ent.png"); 
+		Ent = new ImageIcon("ressources/post.jpg"); 
 		ArrayList<Postulation> postulations = DAO.listePostulation(user);
 		
 		for(int i = 0;i<postulations.size();i++)

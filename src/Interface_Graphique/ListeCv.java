@@ -311,7 +311,7 @@ public class ListeCv extends JPanel {
 		gbc.insets=new Insets(10,10,10,10);
 		Pane.setLayout(grille);
 		gbc.gridy=0;
-		Icon Ent = new ImageIcon("ressources/Ent.png"); 
+		Icon Ent = new ImageIcon("ressources/offres.jpg"); 
 		Icon refus = new ImageIcon("ressources/error.png"); 
 		Icon fait = new ImageIcon("ressources/fait.png"); 
 		Icon attente = new ImageIcon("ressources/attente.jpg"); 

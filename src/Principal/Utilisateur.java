@@ -38,16 +38,17 @@ public class Utilisateur {
 
 
 
-	public Utilisateur(String id, String nom, String prenom){
+	public Utilisateur(String id, String nom, String prenom,String mail,String tel){
 		// TODO Auto-generated constructor stub
 	this.id=id;
 	this.nom=nom;
 	this.prenom=prenom;
+	this.mail=mail;
+	this.tel=tel;
 	}
 
 	public String afficher()
 	{
-		return "Identifiant : "+this.id+" Nom : "+this.nom+" Prenom : "+this.prenom;
 	}
 
 	public String getId() {

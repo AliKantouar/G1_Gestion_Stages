@@ -48,7 +48,7 @@ public class Entreprises {
 
 	public String AfficherS() {
 		// TODO Auto-generated method stub
-		return "Nom Entreprise : "+nom+" Adresse : "+adresse+" Téléphone : "+tel+"Commentaire :"+com;
+		return "<html><b><u>Nom Entreprise</u></b> : "+nom+"<br><br> <b><u>Adresse</u></b> : "+adresse+" <b><u>        Téléphone</u></b> : "+tel+"<br><br> <b><u>Commentaire</u></b> : "+com+"</html>";
 	}
 	
 	

@@ -61,19 +61,31 @@ public class Postulation {
 
 		public String AfficherS() {
 			// TODO Auto-generated method stub
-			String nom ;
 			
-			nom=chercher(user);
 			
-			return("Nom Candidat : " + nom);
+			String statut = "";
+			
+			if(etat=='A')
+			{
+				statut = "En attente";
+			}
+			if(etat=='T')
+			{
+				statut = "Accepté";
+			}
+			if(etat=='F')
+			{
+				statut = "Refusé";
+			}
+			
+			String nom = DAO.nomUtilisateur(user);
+			
+			
+			return "<html><b><u>Nom du candidat</b></u> :"+nom+" "+"<b><u>Poste</b></u> :"+Pos+" "+"<b><u>Duree</b></u> :"+Dur+" "+"<b><u>Statut</b></u> :"+statut+"</html>";
 		}
 
 
-		private String chercher(String user2) {
-			// TODO Auto-generated method stub
-			return user+" "+Pos+" "+Dur+" "+etat;
-		}
-
+		
 
 		public char getEtat() {
 			return etat;

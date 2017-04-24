@@ -167,7 +167,7 @@ public class GererUser extends JPanel {
 	}
 	
 	
-	public void afficherliste(ArrayList<Utilisateur> entreprises)
+	public void afficherliste(ArrayList<Utilisateur> utilisateurs)
 	{
 		Pane = new JPanel();
 		GridBagLayout grille = new GridBagLayout();
@@ -176,13 +176,16 @@ public class GererUser extends JPanel {
 		gbc.insets=new Insets(10,10,10,10);
 		Pane.setLayout(grille);
 		gbc.gridy=0;
-		Icon Ent = new ImageIcon("ressources/Ent.png"); 
+		Icon Ent = new ImageIcon("ressources/user.png"); 
 		
-	for(int i = 0;i<entreprises.size();i++)
+		
+		
+		
+	for(int i = 0;i<utilisateurs.size();i++)
 	{
 		gbc.gridy=i;
 		gbc.gridx=0;
-		Utilisateur o = entreprises.get(i);
+		Utilisateur o = utilisateurs.get(i);
 		JLabel z = new JLabel(o.afficher());
 		z.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
 		z.setIcon(Ent);

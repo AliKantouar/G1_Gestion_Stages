@@ -321,7 +321,7 @@ public class GererOffr extends JPanel {
 		gbc.insets=new Insets(10,10,10,10);
 		Pane.setLayout(grille);
 		gbc.gridy=0;
-		Icon Ent = new ImageIcon("ressources/Ent.png"); 
+		Icon Ent = new ImageIcon("ressources/offres.jpg"); 
 		
 	for(int i = 0;i<offres.size();i++)
 	{

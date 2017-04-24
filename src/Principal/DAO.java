@@ -1600,7 +1600,7 @@ public static ArrayList<Utilisateur> listeU() {
 			// Etape 3 : Création d'un statement
 			st = cn.createStatement();
 
-			String sql = "SELECT `Identifiant`,`Nom`,`Prenom` FROM `Utilisateur`";
+			String sql = "SELECT `Identifiant`,`Nom`,`Prenom`,`Mail`,`Telephone` FROM `Utilisateur`";
 
 			// Etape 4 : exécution requête
 			rs = st.executeQuery(sql);
@@ -1608,7 +1608,7 @@ public static ArrayList<Utilisateur> listeU() {
 			// Si récup données alors étapes 5 (parcours Resultset)
 
 			while (rs.next()) {
-				list.add(new Utilisateur(rs.getString("Identifiant"),rs.getString("Nom"),rs.getString("Prenom")));
+				list.add(new Utilisateur(rs.getString("Identifiant"),rs.getString("Nom"),rs.getString("Prenom"),rs.getString("Mail"),rs.getString("Telephone")));
 
 			}
 		} catch (SQLException e) {
@@ -1696,6 +1696,56 @@ public static void supprimerUtilisateur(Utilisateur u) {
 				e.printStackTrace();
 				}
 			}
+}
+
+
+public static String nomUtilisateur(String user) {
+	// TODO Auto-generated method stub
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	String num = "";
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Nom` FROM `Utilisateur` WHERE `Identifiant`=\""+user+"\"";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			num=rs.getString("Nom");
+			
+			
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return num;
 }
 
 

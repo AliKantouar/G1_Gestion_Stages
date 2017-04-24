@@ -65,6 +65,6 @@ public class Offres {
 
 	public String AfficherS() {
 		// TODO Auto-generated method stub
-		return "Entreprise : "+this.Ent+" Durée : "+this.Dur+" Poste : "+this.Pos+" Places : "+this.Pla;
+		return "<html><b><u>Entreprise</u></b> : "+this.Ent+" <b><u>Durée</u></b> : "+this.Dur+" <b><u>Poste</u></b> : "+this.Pos+" <b><u>Places</u></b> : "+this.Pla+"</html>";
 	}
 }
