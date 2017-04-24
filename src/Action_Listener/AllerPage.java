@@ -12,6 +12,9 @@ import Interface_Graphique.AjouterUtilisateur;
 import Interface_Graphique.Connexion;
 import Interface_Graphique.ConnexionAdmin;
 import Interface_Graphique.ConnexionEnt;
+import Interface_Graphique.GererEnt;
+import Interface_Graphique.GererOffr;
+import Interface_Graphique.GererUser;
 import Interface_Graphique.Inscription;
 import Interface_Graphique.InscriptionEnt;
 import Interface_Graphique.ListeCv;
@@ -98,6 +101,15 @@ public class AllerPage implements ActionListener {
 		}
 		if(b==17){
 			a.setContentPane(new modifEnt(this.a,user));
+		}
+		if(b==20){
+			a.setContentPane(new GererOffr(this.a));
+		}
+		if(b==21){
+			a.setContentPane(new GererEnt(this.a));
+		}
+		if(b==21){
+			a.setContentPane(new GererUser(this.a));
 		}
 		a.repaint();
 		a.revalidate();
