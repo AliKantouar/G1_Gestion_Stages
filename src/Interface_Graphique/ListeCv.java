@@ -21,6 +21,7 @@ import Action_Listener.Recherche;
 import Principal.Application;
 import Principal.DemoJdbc;
 import Principal.Offres;
+import Principal.Postulation;
 
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
@@ -311,8 +312,10 @@ public class ListeCv extends JPanel {
 		Pane.setLayout(grille);
 		gbc.gridy=0;
 		Icon Ent = new ImageIcon("ressources/Ent.png"); 
-	
-	
+		Icon refus = new ImageIcon("ressources/error.png"); 
+		Icon fait = new ImageIcon("ressources/fait.png"); 
+		Icon attente = new ImageIcon("ressources/attente.jpg"); 
+		
 	for(int i = 0;i<offres.size();i++)
 	{
 		gbc.gridy=i;
@@ -325,7 +328,46 @@ public class ListeCv extends JPanel {
 		gbc.gridx++;
 		if(DemoJdbc.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
 		{Pane.add(new Postuler("Postuler",offres.get(i),user,this),gbc);}
-		else{Pane.add(new AnnulerPostulation("Annuler",offres.get(i),user,this),gbc);}
+		else{
+			
+			
+			if(etat(o,user)=='T')
+			{
+				JLabel y = new JLabel("Accepter");
+				
+				y.setIcon(fait);
+				Pane.add(y,gbc);
+				gbc.gridx++;
+				JLabel w =new JLabel("Tel :"+DemoJdbc.numeroEntreprise(o));
+				w.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+				Pane.add(w,gbc);
+			
+			}
+			if(etat(o,user)=='F')
+			{
+				
+				JLabel y = new JLabel("Refusé");
+			//	y.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+				y.setIcon(refus);
+				Pane.add(y,gbc);
+				
+			}
+			if(etat(o,user)!='F'&&etat(o,user)!='T')
+			{
+				
+					JLabel y = new JLabel("En attente");
+		//			y.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+					y.setIcon(attente);
+					Pane.add(y,gbc);
+					gbc.gridx++;
+					Pane.add(new AnnulerPostulation("Annuler",offres.get(i),user,this),gbc);
+					
+				
+			}
+			
+		
+		
+		}
 
 
 	}
@@ -345,6 +387,29 @@ public class ListeCv extends JPanel {
 	
 	
 	
+	
+
+
+	private char etat(Offres o, String user2) {
+		// TODO Auto-generated method stub
+		ArrayList<Postulation> liste = DemoJdbc.listePostulationViaUtilisateur(user2);
+		
+		for(int i = 0;i<liste.size();i++)
+		{
+			if(liste.get(i).getEnt().equals(o.getEnt())
+				&&	liste.get(i).getPos().equals(o.poste())
+				&&  liste.get(i).getDur().equals(o.getDur())
+				&&	liste.get(i).getUser().equals(user2)
+				)
+				{
+					return liste.get(i).getEtat();
+				}
+		}
+		
+		return 0;
+	}
+
+
 	public void setRdbtnNewRadioButton_D(JRadioButton rdbtnNewRadioButton_D) {
 		this.rdbtnNewRadioButton_D = rdbtnNewRadioButton_D;
 	}
