@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-package Interface_Graphique;
 
-public class modifEnt {
-
-}
-=======
 
 
 package Interface_Graphique;
@@ -179,4 +173,4 @@ public class modifEnt extends JPanel {
 	
 	}
 
->>>>>>> origin/master
+

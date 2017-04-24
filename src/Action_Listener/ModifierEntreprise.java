@@ -1,10 +1,5 @@
 package Action_Listener;
-<<<<<<< HEAD
 
-public class ModifierEntreprise {
-
-}
-=======
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -48,4 +43,4 @@ public class ModifierEntreprise implements ActionListener {
 
 }
 
->>>>>>> origin/master
+

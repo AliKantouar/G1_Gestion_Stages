@@ -1310,7 +1310,7 @@ private static int NombrePlaces(Postulation p) {
 }
 
 
-<<<<<<< HEAD
+
 public static String numeroEntreprise(Offres o) {
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
@@ -1359,9 +1359,7 @@ public static String numeroEntreprise(Offres o) {
 	return num;
 	
 }
-=======
 
->>>>>>> origin/master
 
 	
 
