@@ -159,7 +159,12 @@ public static boolean verifU(String user, String mdp) {
 			}
 			else
 			{
-				existe = true;
+				if(rs.getString("Identifiant").equals(user)&&rs.getString("Mdp").equals(mdp))
+				{
+
+					existe = true;
+			
+				}
 			}
 		}
 	} catch (SQLException e) {
@@ -345,7 +350,9 @@ public static boolean verifE(String nom) {
 			}
 			else
 			{
-				existe = true;
+				
+					existe = true;
+			
 			}
 		}
 	} catch (SQLException e) {
@@ -804,7 +811,10 @@ public static boolean connexionE(String user, String mdp) {
 			}
 			else
 			{
+				if(rs.getString("NomEntreprise").equals(user)&&rs.getString("Mdp").equals(mdp))
+				{
 				existe = true;
+				}
 			}
 		}
 	} catch (SQLException e) {
