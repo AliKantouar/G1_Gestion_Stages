@@ -5,6 +5,8 @@ import Action_Listener.AllerPage;
 import Principal.Application;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -21,6 +23,11 @@ public class PanneauUser extends JPanel {
 	public PanneauUser(Application a , String user) {
 		this.a=a;
 		this.user=user;
+		this.a.setPreferredSize(new Dimension(450, 300));
+		this.a.pack();
+		this.a.setLocationRelativeTo(null);
+		this.a.setVisible(true);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{450, 0};
 		gridBagLayout.rowHeights = new int[]{24, 0, 0, 0, 0, 0, 0, 0, 0};
