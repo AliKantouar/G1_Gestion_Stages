@@ -97,7 +97,7 @@ public class CV extends JDialog implements ActionListener{
 				}
 				{
 					JLabel textPane = new JLabel();
-					textPane.setText(a.getTel());
+					textPane.setText(a.getMail());
 					GridBagConstraints gbc_textPane = new GridBagConstraints();
 					gbc_textPane.insets = new Insets(0, 0, 5, 0);
 					gbc_textPane.fill = GridBagConstraints.BOTH;
@@ -117,9 +117,10 @@ public class CV extends JDialog implements ActionListener{
 					JLabel textPane = new JLabel();
 					textPane.setText(a.getAdr());
 					GridBagConstraints gbc_textPane = new GridBagConstraints();
+					gbc_textPane.anchor = GridBagConstraints.NORTH;
 					gbc_textPane.gridwidth = 3;
 					gbc_textPane.insets = new Insets(0, 0, 0, 5);
-					gbc_textPane.fill = GridBagConstraints.BOTH;
+					gbc_textPane.fill = GridBagConstraints.HORIZONTAL;
 					gbc_textPane.gridx = 2;
 					gbc_textPane.gridy = 1;
 					panel_1.add(textPane, gbc_textPane);

@@ -81,10 +81,10 @@ public class PanneauEnt extends Container {
 		gbc_panel_3.gridx = 0;
 		gbc_panel_3.gridy = 5;
 		add(panel_3, gbc_panel_3);
-		
-		JButton btnNewButton_2 = new JButton("D\u00E9connexion");
-		btnNewButton_2.addActionListener(new AllerPage(this.a,10));
+
+		JButton btnNewButton_2 = new JButton("Ajouter Offre");
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnNewButton_2.addActionListener(new AllerPage(this.a,16,user));
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_2.gridx = 0;
@@ -93,10 +93,27 @@ public class PanneauEnt extends Container {
 		
 		JPanel panel_4 = new JPanel();
 		GridBagConstraints gbc_panel_4 = new GridBagConstraints();
+		gbc_panel_4.insets = new Insets(0, 0, 5, 0);
 		gbc_panel_4.fill = GridBagConstraints.BOTH;
 		gbc_panel_4.gridx = 0;
 		gbc_panel_4.gridy = 7;
 		add(panel_4, gbc_panel_4);
+		
+		JButton btnNewButton_3 = new JButton("D\u00E9connexion");
+		btnNewButton_3.addActionListener(new AllerPage(this.a,10));
+		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
+		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton_3.gridx = 0;
+		gbc_btnNewButton_3.gridy = 8;
+		add(btnNewButton_3, gbc_btnNewButton_3);
+		
+		JPanel panel_5 = new JPanel();
+		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
+		gbc_panel_5.fill = GridBagConstraints.BOTH;
+		gbc_panel_5.gridx = 0;
+		gbc_panel_5.gridy = 9;
+		add(panel_5, gbc_panel_5);
 
 	}
 
