@@ -35,7 +35,7 @@ public class CV extends JDialog implements ActionListener{
 			JPanel panel = new JPanel();
 			getContentPane().add(panel, BorderLayout.NORTH);
 			{
-				JLabel lblCvDeMonsieur = new JLabel("Cv de Monsieur : "+a.getNom()+" "+a.getPrenom()+"");
+				JLabel lblCvDeMonsieur = new JLabel("<html><b><u>Cv de Monsieur :</b></u> "+a.getNom()+" "+a.getPrenom()+"</html>");
 				lblCvDeMonsieur.setFont(new Font("Tahoma", Font.BOLD, 17));
 				panel.add(lblCvDeMonsieur);
 			}
@@ -73,7 +73,7 @@ public class CV extends JDialog implements ActionListener{
 				gbl_panel_1.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 				panel_1.setLayout(gbl_panel_1);
 				{
-					JLabel lblTlphone = new JLabel("T\u00E9l\u00E9phone :");
+					JLabel lblTlphone = new JLabel("<html><b><u>T\u00E9l\u00E9phone :</b></u></html>");
 					GridBagConstraints gbc_lblTlphone = new GridBagConstraints();
 					gbc_lblTlphone.anchor = GridBagConstraints.NORTHEAST;
 					gbc_lblTlphone.insets = new Insets(0, 0, 5, 5);
@@ -92,7 +92,7 @@ public class CV extends JDialog implements ActionListener{
 					panel_1.add(textPane, gbc_textPane);
 				}
 				{
-					JLabel lblMail = new JLabel("Mail :");
+					JLabel lblMail = new JLabel("<html><b><u>Mail :</b></u></html>");
 					GridBagConstraints gbc_lblMail = new GridBagConstraints();
 					gbc_lblMail.insets = new Insets(0, 0, 5, 5);
 					gbc_lblMail.gridx = 2;
@@ -110,7 +110,7 @@ public class CV extends JDialog implements ActionListener{
 					panel_1.add(textPane, gbc_textPane);
 				}
 				{
-					JLabel lblAdresse = new JLabel("Adresse :");
+					JLabel lblAdresse = new JLabel("<html><b><u>Adresse :</b></u></html>");
 					GridBagConstraints gbc_lblAdresse = new GridBagConstraints();
 					gbc_lblAdresse.anchor = GridBagConstraints.NORTHEAST;
 					gbc_lblAdresse.insets = new Insets(0, 0, 5, 5);
@@ -131,7 +131,7 @@ public class CV extends JDialog implements ActionListener{
 					panel_1.add(textPane, gbc_textPane);
 				}
 				{
-					JLabel lblNewLabel = new JLabel("Formation :");
+					JLabel lblNewLabel = new JLabel("<html><b><u>Formation :</b></u></html>");
 					GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 					gbc_lblNewLabel.anchor = GridBagConstraints.NORTHEAST;
 					gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -156,7 +156,7 @@ public class CV extends JDialog implements ActionListener{
 					}
 				}
 				{
-					JLabel lblNewLabel_1 = new JLabel("Exp\u00E9riences :");
+					JLabel lblNewLabel_1 = new JLabel("<html><b><u>Exp\u00E9riences :</b></u></html>");
 					GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 					gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTHEAST;
 					gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -181,7 +181,7 @@ public class CV extends JDialog implements ActionListener{
 					}
 				}
 				{
-					JLabel lblNewLabel_2 = new JLabel("Comp\u00E9tences :");
+					JLabel lblNewLabel_2 = new JLabel("<html><b><u>Comp\u00E9tences :</b></u></html>");
 					GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 					gbc_lblNewLabel_2.anchor = GridBagConstraints.NORTHEAST;
 					gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
@@ -206,7 +206,7 @@ public class CV extends JDialog implements ActionListener{
 					}
 				}
 				{
-					JLabel lblNewLabel_3 = new JLabel("Interets :");
+					JLabel lblNewLabel_3 = new JLabel("<html><b><u>Interets :</b></u></html>");
 					GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 					gbc_lblNewLabel_3.anchor = GridBagConstraints.NORTHEAST;
 					gbc_lblNewLabel_3.insets = new Insets(0, 0, 0, 5);

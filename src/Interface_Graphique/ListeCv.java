@@ -334,6 +334,12 @@ public class ListeCv extends JPanel {
 			{
 			Pane.add(new Postuler("Postuler",offres.get(i),user,this),gbc);
 			}
+			else
+			{
+			JLabel j = new JLabel("Complet");
+			j.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+			Pane.add(j,gbc);
+			}
 		
 		
 		
