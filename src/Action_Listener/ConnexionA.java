@@ -31,20 +31,20 @@ public class ConnexionA implements ActionListener {
 		//criptage du mot de passe
 		Md5 criptage=new Md5(mdp);
 		mdp=criptage.getCode();
-		if(this.mdp.equals(""))
+		if(this.mdp.equals("d41d8cd98f00b204e9800998ecf8427e")) //code du mot ""
 		{
-			Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
+			Erreur mdpInconnu= new Erreur("Veuillez entrer un mot de passe");
 		}
 		else
 		{
-			if(mdp.equals("9d0c2b5e15cc600a9828a18a5ffe7dba"))
+			if(mdp.equals("9d0c2b5e15cc600a9828a18a5ffe7dba")) //code secret!
 			{
 				a.setContentPane(new PanneauAdmin(a));
 				a.repaint();
 				a.revalidate();
 			}
 			else{
-				Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
+				Erreur mdpInconnu= new Erreur("Mot de passe incorrecte");
 			}
 		
 		

@@ -54,7 +54,7 @@ public class AjouterE implements ActionListener {
 		}
 		
 		
-		if(!mdp.equals("")&&!DAO.verifE(nom))
+		if(!mdp.equals("")&&!DAO.dispoE(nom))
 		{
 			Md5 criptage=new Md5(mdp);
 			mdp=criptage.getCode();
@@ -62,7 +62,15 @@ public class AjouterE implements ActionListener {
 		}
 		else
 		{
-			Erreur error=new Erreur("Cette entreprise est déjà enregistrée");
+			if(DAO.dispoE(nom)){
+				Erreur error=new Erreur("Cette entreprise est déjà enregistrée");
+			}
+			else if(nom.equals("")){
+				Erreur error=new Erreur("Veuillez entrer un nom");
+			}
+			else if(mdp.equals("")){
+				Erreur error=new Erreur("Veuillez entrer un mot de passe");
+			}
 		}
 		if (b!=null){
 			a.setContentPane(new AjouterEntreprise(this.a));

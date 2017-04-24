@@ -47,17 +47,20 @@ public class AjouterU implements ActionListener {
 			this.user=c.getTextField().getText();
 			this.mdp=c.getTextField_1().getText();
 		}
-		
-		Md5 criptage=new Md5(mdp);
-		mdp=criptage.getCode();
-			
-		if(user.equals("")||mdp.equals("")||DAO.verifU(user, mdp)){
+		//criptage du mot de passe
+		if(DAO.dispoU(user)){
 			Erreur error=new Erreur("Ce nom d'utilisateur n'est pas disponible");
 		}
-		else
-		{		
-			//criptage du mot de passe
+		else if(user.equals("")){
+			Erreur error=new Erreur("Veuillez entrer un nom d'utilisateur");
+		}
+		else if(mdp.equals("")){
+			Erreur error=new Erreur("Veuillez entrer un mot de passe");
+		}
+		else{		
 			
+			Md5 criptage=new Md5(mdp);
+			mdp=criptage.getCode();
 			DAO.Inscrire(user, mdp);
 			
 			//difference entre admin et utilisateur

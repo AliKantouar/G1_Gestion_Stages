@@ -122,7 +122,7 @@ public static void reinitialiser() {
 
 
 
-public static boolean verifU(String user, String mdp) {
+public static boolean connexionU(String user,String mdp) {
 
 	// Information d'accès à la base de données
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
@@ -162,6 +162,68 @@ public static boolean verifU(String user, String mdp) {
 			else
 			{
 				if(rs.getString("Identifiant").equals(user)&&rs.getString("Mdp").equals(mdp))
+				{
+
+					existe = true;
+			
+				}
+			}
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	return existe;
+}
+public static boolean dispoU(String user) {
+
+	// Information d'accès à la base de données
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	boolean existe = false;
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets` FROM `Utilisateur` WHERE `Identifiant`=\""+user+"\"";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+
+		
+
+			if(rs.getString("Identifiant").equals(""))
+			{
+				existe=false;
+			}
+			else
+			{
+				if(rs.getString("Identifiant").equals(user))
 				{
 
 					existe = true;
@@ -319,7 +381,7 @@ public static void ajouterE(String nom,String mdp, String adr, String tel, Strin
 
 //Renvoie VRAI si le nom d'entreprise existe
 //sinon renvoie FAUX
-public static boolean verifE(String nom) {
+public static boolean dispoE(String nom) {
 
 	// Information d'accès à la base de données
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
