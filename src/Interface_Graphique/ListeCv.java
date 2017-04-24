@@ -336,8 +336,8 @@ public class ListeCv extends JPanel {
 			}
 			else
 			{
-			JLabel j = new JLabel("Complet");
-			j.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
+			JLabel j = new JLabel("<html><b><u>Complet</u></b></html>");
+			
 			Pane.add(j,gbc);
 			}
 		
