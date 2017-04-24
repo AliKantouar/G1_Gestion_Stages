@@ -2,6 +2,7 @@ package Principal;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Interface_Graphique.Erreur;
 import Interface_Graphique.modifCV;
 import Interface_Graphique.modifEnt;
 
@@ -697,7 +698,15 @@ public static void ajouterO(String entreprise, String dur, String poste, String 
 		st= cn.createStatement();
 		
 		String sql = "INSERT INTO `offres`(`NomEntreprise`, `Duree`, `Poste`, `Places`) VALUES ('"+entreprise+"','"+dur+"','"+poste+"','"+pla+"')";
-		st.executeUpdate(sql);
+		if(Integer.parseInt(pla)<=0)
+		{
+			Erreur a = new Erreur("Places incorects");
+		}
+		else
+		{
+			st.executeUpdate(sql);
+		}
+
 	}
 	catch (SQLException e){
 		e.printStackTrace();
@@ -1085,7 +1094,6 @@ public static Utilisateur UtilisateurViaId(String id) {
 	Connection cn =null;
 	Statement st =null;
 	ResultSet rs =null;
-	boolean existe = false;
 	Utilisateur a=new Utilisateur();
 	try {
 
@@ -1234,7 +1242,7 @@ private static boolean etaitaccepter(Postulation p) {
 
 
 
-private static void IncrePlace(Postulation p) {
+public static void IncrePlace(Postulation p) {
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
@@ -1271,7 +1279,7 @@ private static void IncrePlace(Postulation p) {
 }
 
 
-private static void SoustrairePlace(Postulation p) {
+public static void SoustrairePlace(Postulation p) {
 	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 	String login = "root";
 	String passwd = "";
@@ -1308,7 +1316,7 @@ private static void SoustrairePlace(Postulation p) {
 }
 
 
-private static int NombrePlaces(Postulation p) {
+public static int NombrePlaces(Postulation p) {
 	{
 		String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
 		String login = "root";
@@ -1536,7 +1544,7 @@ public static ArrayList<Utilisateur> listeU() {
 			// Etape 3 : Création d'un statement
 			st = cn.createStatement();
 
-			String sql = "SELECT `NomEntreprise`,`Adresse`,`Telephone`,`Commentaire` FROM `entreprises`";
+			String sql = "SELECT `Identifiant`,`Nom`,`Prenom` FROM `Utilisateur`";
 
 			// Etape 4 : exécution requête
 			rs = st.executeQuery(sql);
@@ -1544,8 +1552,8 @@ public static ArrayList<Utilisateur> listeU() {
 			// Si récup données alors étapes 5 (parcours Resultset)
 
 			while (rs.next()) {
-				//list.add(new Entreprises(rs.getString("NomEntreprise"),rs.getString("Adresse"),rs.getString("Telephone"),rs.getString("Commentaire")));
-						
+				list.add(new Utilisateur(rs.getString("Identifiant"),rs.getString("Nom"),rs.getString("Prenom")));
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -1563,6 +1571,76 @@ public static ArrayList<Utilisateur> listeU() {
 		
 		return list;
 	}
+
+
+public static void supprimerPostulationViaId(Utilisateur u) {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "DELETE FROM `postulation` WHERE `Identifiant`=\""+u.id+"\" ";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+	
+}
+
+
+public static void supprimerUtilisateur(Utilisateur u) {
+	
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "DELETE FROM `Utilisateur` WHERE `Identifiant`=\""+u.id+"\" ";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+}
 
 
 	

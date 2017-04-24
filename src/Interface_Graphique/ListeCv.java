@@ -327,7 +327,17 @@ public class ListeCv extends JPanel {
 		Pane.add(z,gbc);
 		gbc.gridx++;
 		if(DAO.premierPostulation(user,o.getEnt(),o.poste(),o.getDur()))	
-		{Pane.add(new Postuler("Postuler",offres.get(i),user,this),gbc);}
+		{
+			
+			
+			if(Integer.parseInt(o.getPla())!=0)
+			{
+			Pane.add(new Postuler("Postuler",offres.get(i),user,this),gbc);
+			}
+		
+		
+		
+		}
 		else{
 			
 			

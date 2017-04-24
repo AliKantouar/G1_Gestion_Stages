@@ -38,6 +38,18 @@ public class Utilisateur {
 
 
 
+	public Utilisateur(String id, String nom, String prenom){
+		// TODO Auto-generated constructor stub
+	this.id=id;
+	this.nom=nom;
+	this.prenom=prenom;
+	}
+
+	public String afficher()
+	{
+		return "Identifiant : "+this.id+" Nom : "+this.nom+" Prenom : "+this.prenom;
+	}
+
 	public String getId() {
 		return id;
 	}
