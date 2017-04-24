@@ -74,14 +74,6 @@ public class ModifierCV implements ActionListener {
 		this.mail = mail;
 	}
 
-	public String getDescr() {
-		return descr;
-	}
-
-	public void setDescr(String descr) {
-		this.descr = descr;
-	}
-
 	public String getAdr() {
 		return adr;
 	}
@@ -97,7 +89,6 @@ public class ModifierCV implements ActionListener {
 	String prenom;
 	String tel;
 	String mail;
-	String descr;
 	String adr;
 	String form;
 	String comp;
@@ -117,8 +108,11 @@ public class ModifierCV implements ActionListener {
 		this.prenom=this.m.getTextField().getText();
 		this.tel=this.m.getTextField_3().getText();
 		this.mail=this.m.getTextField_1().getText();
-		this.descr=this.m.getTextArea().getText();
 		this.adr=this.m.getTextField_4().getText();
+		this.form=this.m.getTextArea().getText();
+		this.comp=this.m.getTextArea_1().getText();
+		this.exp=this.m.getTextArea_2().getText();
+		this.inte=this.m.getTextArea_3().getText();
 		
 		DAO.modifierCV(user,nom,prenom,tel,adr,mail,form,comp,exp,inte);
 		
