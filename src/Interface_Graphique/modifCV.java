@@ -1,6 +1,8 @@
 package Interface_Graphique;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,6 +19,7 @@ import Principal.DemoJdbc;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class modifCV extends JPanel {
 	private JTextField textField;
@@ -48,6 +51,11 @@ public class modifCV extends JPanel {
 	public modifCV(Application a,String user) {
 		this.a=a;
 		this.user=user;
+		this.a.setPreferredSize(new Dimension(800, 600));
+		this.a.pack();
+		this.a.setLocationRelativeTo(null);
+		this.a.setVisible(true);
+		setLayout(new BorderLayout(0, 0));
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{450, 0};
@@ -77,26 +85,26 @@ public class modifCV extends JPanel {
 		gbc_panel_2.gridy = 1;
 		add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{0, 0, 53, 0, 69, 0, 0, 0, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 46, 52, 70, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[]{0, 53, 0, 69, 0};
+		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 46, 52, 64, 0, 0};
+		gbl_panel_2.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nom :");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_1.gridx = 1;
-		gbc_lblNewLabel_1.gridy = 1;
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 0;
 		panel_2.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		textField_2 = new JTextField();
 		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.anchor = GridBagConstraints.WEST;
+		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_2.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_2.gridx = 2;
-		gbc_textField_2.gridy = 1;
+		gbc_textField_2.gridx = 1;
+		gbc_textField_2.gridy = 0;
 		panel_2.add(textField_2, gbc_textField_2);
 		textField_2.setColumns(10);
 		
@@ -104,16 +112,16 @@ public class modifCV extends JPanel {
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_3.gridx = 3;
-		gbc_lblNewLabel_3.gridy = 1;
+		gbc_lblNewLabel_3.gridx = 2;
+		gbc_lblNewLabel_3.gridy = 0;
 		panel_2.add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 4;
-		gbc_textField.gridy = 1;
+		gbc_textField.gridx = 3;
+		gbc_textField.gridy = 0;
 		panel_2.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
@@ -121,16 +129,16 @@ public class modifCV extends JPanel {
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 1;
-		gbc_lblNewLabel_2.gridy = 2;
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 1;
 		panel_2.add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		textField_3 = new JTextField();
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.gridx = 2;
-		gbc_textField_3.gridy = 2;
+		gbc_textField_3.gridx = 1;
+		gbc_textField_3.gridy = 1;
 		panel_2.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
 		
@@ -138,16 +146,16 @@ public class modifCV extends JPanel {
 		GridBagConstraints gbc_lblAdresse = new GridBagConstraints();
 		gbc_lblAdresse.anchor = GridBagConstraints.EAST;
 		gbc_lblAdresse.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAdresse.gridx = 3;
-		gbc_lblAdresse.gridy = 2;
+		gbc_lblAdresse.gridx = 2;
+		gbc_lblAdresse.gridy = 1;
 		panel_2.add(lblAdresse, gbc_lblAdresse);
 		
 		textField_4 = new JTextField();
 		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 4;
-		gbc_textField_4.gridy = 2;
+		gbc_textField_4.gridx = 3;
+		gbc_textField_4.gridy = 1;
 		panel_2.add(textField_4, gbc_textField_4);
 		textField_4.setColumns(10);
 		
@@ -155,85 +163,99 @@ public class modifCV extends JPanel {
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
-		gbc_lblNewLabel_4.gridx = 1;
-		gbc_lblNewLabel_4.gridy = 3;
+		gbc_lblNewLabel_4.gridx = 0;
+		gbc_lblNewLabel_4.gridy = 2;
 		panel_2.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
 		textField_1 = new JTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 2;
-		gbc_textField_1.gridy = 3;
+		gbc_textField_1.gridx = 1;
+		gbc_textField_1.gridy = 2;
 		panel_2.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblFormation = new JLabel("Formation :");
 		GridBagConstraints gbc_lblFormation = new GridBagConstraints();
+		gbc_lblFormation.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblFormation.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFormation.gridx = 1;
-		gbc_lblFormation.gridy = 4;
+		gbc_lblFormation.gridx = 0;
+		gbc_lblFormation.gridy = 3;
 		panel_2.add(lblFormation, gbc_lblFormation);
 		
-		JTextArea textArea = new JTextArea();
-		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.gridwidth = 7;
-		gbc_textArea.insets = new Insets(0, 0, 5, 0);
-		gbc_textArea.fill = GridBagConstraints.BOTH;
-		gbc_textArea.gridx = 2;
-		gbc_textArea.gridy = 4;
-		panel_2.add(textArea, gbc_textArea);
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridwidth = 3;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 3;
+		panel_2.add(scrollPane, gbc_scrollPane);
+		
+		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		
 		JLabel lblComptences = new JLabel("Comp\u00E9tences :");
 		GridBagConstraints gbc_lblComptences = new GridBagConstraints();
+		gbc_lblComptences.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblComptences.insets = new Insets(0, 0, 5, 5);
-		gbc_lblComptences.gridx = 1;
-		gbc_lblComptences.gridy = 5;
+		gbc_lblComptences.gridx = 0;
+		gbc_lblComptences.gridy = 4;
 		panel_2.add(lblComptences, gbc_lblComptences);
 		
-		JTextArea textArea_1 = new JTextArea();
-		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
-		gbc_textArea_1.gridwidth = 7;
-		gbc_textArea_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textArea_1.fill = GridBagConstraints.BOTH;
-		gbc_textArea_1.gridx = 2;
-		gbc_textArea_1.gridy = 5;
-		panel_2.add(textArea_1, gbc_textArea_1);
+		JScrollPane scrollPane_1 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_1.gridwidth = 3;
+		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_1.gridx = 1;
+		gbc_scrollPane_1.gridy = 4;
+		panel_2.add(scrollPane_1, gbc_scrollPane_1);
+		
+		textArea_1 = new JTextArea();
+		scrollPane_1.setViewportView(textArea_1);
 		
 		JLabel lblExprience = new JLabel("Exp\u00E9rience :");
 		GridBagConstraints gbc_lblExprience = new GridBagConstraints();
-		gbc_lblExprience.anchor = GridBagConstraints.EAST;
+		gbc_lblExprience.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblExprience.insets = new Insets(0, 0, 5, 5);
-		gbc_lblExprience.gridx = 1;
-		gbc_lblExprience.gridy = 6;
+		gbc_lblExprience.gridx = 0;
+		gbc_lblExprience.gridy = 5;
 		panel_2.add(lblExprience, gbc_lblExprience);
 		
-		JTextArea textArea_2 = new JTextArea();
-		GridBagConstraints gbc_textArea_2 = new GridBagConstraints();
-		gbc_textArea_2.gridwidth = 7;
-		gbc_textArea_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textArea_2.fill = GridBagConstraints.BOTH;
-		gbc_textArea_2.gridx = 2;
-		gbc_textArea_2.gridy = 6;
-		panel_2.add(textArea_2, gbc_textArea_2);
+		JScrollPane scrollPane_2 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
+		gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_2.gridwidth = 3;
+		gbc_scrollPane_2.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane_2.gridx = 1;
+		gbc_scrollPane_2.gridy = 5;
+		panel_2.add(scrollPane_2, gbc_scrollPane_2);
+		
+		textArea_2 = new JTextArea();
+		scrollPane_2.setViewportView(textArea_2);
 		
 		JLabel lblDescriptio = new JLabel("Interets:");
 		GridBagConstraints gbc_lblDescriptio = new GridBagConstraints();
 		gbc_lblDescriptio.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblDescriptio.insets = new Insets(0, 0, 0, 5);
-		gbc_lblDescriptio.gridx = 1;
-		gbc_lblDescriptio.gridy = 7;
+		gbc_lblDescriptio.gridx = 0;
+		gbc_lblDescriptio.gridy = 6;
 		panel_2.add(lblDescriptio, gbc_lblDescriptio);
 		
-		JTextArea textArea_3 = new JTextArea();
-		GridBagConstraints gbc_textArea_3 = new GridBagConstraints();
-		gbc_textArea_3.gridwidth = 7;
-		gbc_textArea_3.insets = new Insets(0, 0, 0, 5);
-		gbc_textArea_3.fill = GridBagConstraints.BOTH;
-		gbc_textArea_3.gridx = 2;
-		gbc_textArea_3.gridy = 7;
-		panel_2.add(textArea_3, gbc_textArea_3);
+		JScrollPane scrollPane_3 = new JScrollPane();
+		GridBagConstraints gbc_scrollPane_3 = new GridBagConstraints();
+		gbc_scrollPane_3.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane_3.gridwidth = 3;
+		gbc_scrollPane_3.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane_3.gridx = 1;
+		gbc_scrollPane_3.gridy = 6;
+		panel_2.add(scrollPane_3, gbc_scrollPane_3);
+		
+		textArea_3 = new JTextArea();
+		scrollPane_3.setViewportView(textArea_3);
 		
 		JPanel panel_1 = new JPanel();
 		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
@@ -273,20 +295,20 @@ public class modifCV extends JPanel {
 	public JTextArea getTextArea_1() {
 		return textArea_1;
 	}
-	public void setTextArea_1(JTextArea textArea) {
-		this.textArea = textArea_2;
+	public void setTextArea_1(JTextArea textArea_1) {
+		this.textArea_1 = textArea_1;
 	}
 	public JTextArea getTextArea_2() {
-		return textArea_3;
+		return textArea_2;
 	}
-	public void setTextArea_2(JTextArea textArea) {
-		this.textArea = textArea;
+	public void setTextArea_2(JTextArea textArea_2) {
+		this.textArea_2 = textArea_2;
 	}
 	public JTextArea getTextArea_3() {
-		return textArea;
+		return textArea_3;
 	}
-	public void setTextArea_3(JTextArea textArea) {
-		this.textArea = textArea;
+	public void setTextArea_3(JTextArea textArea_3) {
+		this.textArea_3 = textArea_3;
 	}
 	public JTextField getTextField() {
 		return textField;

@@ -251,6 +251,9 @@ public static void initModifCV(modifCV modifCV) {
 				modifCV.getTextField_3().setText(rs.getString("telephone"));
 				modifCV.getTextField_4().setText(rs.getString("Adresse"));
 				modifCV.getTextArea().setText(rs.getString("Formation"));
+				modifCV.getTextArea_1().setText(rs.getString("Competences"));
+				modifCV.getTextArea_2().setText(rs.getString("Experience"));
+				modifCV.getTextArea_3().setText(rs.getString("Interets"));
 				modifCV.validate();
 				modifCV.repaint();
 				
