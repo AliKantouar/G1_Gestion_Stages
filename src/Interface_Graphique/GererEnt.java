@@ -40,7 +40,7 @@ public class GererEnt extends JPanel {
 	JPanel panel_2;
 	JScrollPane scrollPane;
 	
-	private int nbr = DAO.listeO().size();
+	private int nbr = DAO.listeE().size();
 	
 	public GererEnt(Application a )
 	{

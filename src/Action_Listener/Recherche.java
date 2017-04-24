@@ -25,6 +25,7 @@ public class Recherche implements ActionListener {
 	boolean d;
 	boolean p;
 	GererOffr ge;
+	
 	boolean admin = false;
 	
 	
@@ -39,6 +40,8 @@ public class Recherche implements ActionListener {
 		this.ge=GererOffr;
 		admin=true;
 	}
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {

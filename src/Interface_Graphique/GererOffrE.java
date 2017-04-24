@@ -24,38 +24,40 @@ import Action_Listener.AllerPage;
 import Action_Listener.Recherche;
 import Principal.Application;
 import Principal.DAO;
-import Principal.Entreprises;
 import Principal.Offres;
-import Principal.Utilisateur;
 
-public class GererUser extends JPanel {
+public class GererOffrE extends JPanel {
 	
 	
-	
+	private JTextField textField;
+	private JTextField textField_1;
 	Application a;
-
+	JRadioButton rdbtnNewRadioButton_p;
 	GridBagConstraints gbc ;
-	
-	
+	JRadioButton rdbtnNewRadioButton_D;
+	JRadioButton rdbtnNewRadioButtonE;
+
 	JPanel Pane;
 	JPanel panel_2;
 	JScrollPane scrollPane;
+
+	private int nbr = DAO.listeO().size();
+	String user;
 	
-	private int nbr = DAO.listeU().size();
-	
-	public GererUser(Application a )
+	public GererOffrE(Application a, String user )
 	{
 		this.a=a;
 		this.a.setPreferredSize(new Dimension(800, 600));
 		this.a.pack();
 		this.a.setLocationRelativeTo(null);
 		this.a.setVisible(true);
+		this.user=user;
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		add(panel, BorderLayout.NORTH);
 		
-		JLabel lblNewLabel = new JLabel("Liste des Utilisateurs ("+this.getNbr()+") :");
+		JLabel lblNewLabel = new JLabel("Liste des offres de Stage ("+this.getNbr()+") :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		panel.add(lblNewLabel);
 		
@@ -66,7 +68,7 @@ public class GererUser extends JPanel {
 		
 		
 		JButton btnNewButton_1 = new JButton("Retour");
-		btnNewButton_1.addActionListener(new AllerPage(this.a,2));
+		btnNewButton_1.addActionListener(new AllerPage(this.a,11,user));
 		panel_1.add(btnNewButton_1);
 		
 		panel_2 = new JPanel();
@@ -85,7 +87,6 @@ public class GererUser extends JPanel {
 		gbc_panel_4.gridx = 0;
 		gbc_panel_4.gridy = 0;
 		panel_2.add(panel_4, gbc_panel_4);
-		
 		GridBagLayout gbl_panel_4 = new GridBagLayout();
 		gbl_panel_4.columnWidths = new int[]{0, 128, 142, 0, 0, 0};
 		gbl_panel_4.rowHeights = new int[]{0, 0, 0, 0};
@@ -95,14 +96,40 @@ public class GererUser extends JPanel {
 		
 		
 		
-		ArrayList<Utilisateur> list=ListeU();
+		
+	
+		
+		
+	
+	
+		
+		
+		
+		
+		
+			
+		
+		
+		ArrayList<Offres> list=ListeOffres();
 		afficherliste(list);
 		
 	}
 
-	
+	public JTextField getTextField() {
+		return textField;
+	}
 
-	
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
 
 	public Application getA() {
 		return a;
@@ -112,7 +139,13 @@ public class GererUser extends JPanel {
 		this.a = a;
 	}
 
-	
+	public JRadioButton getRdbtnNewRadioButton_p() {
+		return rdbtnNewRadioButton_p;
+	}
+
+	public void setRdbtnNewRadioButton_p(JRadioButton rdbtnNewRadioButton_p) {
+		this.rdbtnNewRadioButton_p = rdbtnNewRadioButton_p;
+	}
 
 	public GridBagConstraints getGbc() {
 		return gbc;
@@ -122,7 +155,21 @@ public class GererUser extends JPanel {
 		this.gbc = gbc;
 	}
 
-	
+	public JRadioButton getRdbtnNewRadioButton_D() {
+		return rdbtnNewRadioButton_D;
+	}
+
+	public void setRdbtnNewRadioButton_D(JRadioButton rdbtnNewRadioButton_D) {
+		this.rdbtnNewRadioButton_D = rdbtnNewRadioButton_D;
+	}
+
+	public JRadioButton getRdbtnNewRadioButtonE() {
+		return rdbtnNewRadioButtonE;
+	}
+
+	public void setRdbtnNewRadioButtonE(JRadioButton rdbtnNewRadioButtonE) {
+		this.rdbtnNewRadioButtonE = rdbtnNewRadioButtonE;
+	}
 
 	
 
@@ -151,6 +198,7 @@ public class GererUser extends JPanel {
 	}
 
 	
+
 	public void setNbr(int nbr) {
 		this.nbr = nbr;
 	}
@@ -159,15 +207,17 @@ public class GererUser extends JPanel {
 		return nbr;
 	}
 
+	private ArrayList<Offres> ListeOffres() {
+		// TODO Auto-generated method stub
+		return DAO.listeO();
+	}
+
 	
 
-	private ArrayList<Utilisateur> ListeU() {
-		// TODO Auto-generated method stub
-		return DAO.listeU();
-	}
 	
 	
-	public void afficherliste(ArrayList<Utilisateur> entreprises)
+	
+	public void afficherliste(ArrayList<Offres> offres)
 	{
 		Pane = new JPanel();
 		GridBagLayout grille = new GridBagLayout();
@@ -178,18 +228,18 @@ public class GererUser extends JPanel {
 		gbc.gridy=0;
 		Icon Ent = new ImageIcon("ressources/Ent.png"); 
 		
-	for(int i = 0;i<entreprises.size();i++)
-	{
+	for(int i = 0;i<offres.size();i++)
+	{if(offres.get(i).getEnt().equals(user)){
 		gbc.gridy=i;
 		gbc.gridx=0;
-		Utilisateur o = entreprises.get(i);
-		JLabel z = new JLabel(o.afficher());
+		Offres o = offres.get(i);
+		JLabel z = new JLabel(o.AfficherS());
 		z.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK));
 		z.setIcon(Ent);
 		Pane.add(z,gbc);
 		gbc.gridx++;
-		Pane.add(new SupprimerUtilisateur("Supprimer",o,this),gbc);
-	}
+		Pane.add(new SupprimerOffre("Supprimer", o, this),gbc);
+	}}
 
 
 	

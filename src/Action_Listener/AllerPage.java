@@ -14,6 +14,7 @@ import Interface_Graphique.ConnexionAdmin;
 import Interface_Graphique.ConnexionEnt;
 import Interface_Graphique.GererEnt;
 import Interface_Graphique.GererOffr;
+import Interface_Graphique.GererOffrE;
 import Interface_Graphique.GererUser;
 import Interface_Graphique.Inscription;
 import Interface_Graphique.InscriptionEnt;
@@ -108,8 +109,11 @@ public class AllerPage implements ActionListener {
 		if(b==21){
 			a.setContentPane(new GererEnt(this.a));
 		}
-		if(b==21){
+		if(b==22){
 			a.setContentPane(new GererUser(this.a));
+		}
+		if(b==23){
+			a.setContentPane(new GererOffrE(this.a,user));
 		}
 		a.repaint();
 		a.revalidate();
