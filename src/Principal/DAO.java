@@ -510,7 +510,7 @@ public static ArrayList<String> liste() {
 			e.printStackTrace();
 		}
 	}
-	afficher(list);
+	
 	return list;
 }
 
@@ -563,6 +563,54 @@ public static ArrayList<Offres> listeO() {
 	{
 		list.get(i).Afficher();
 	}
+	return list;
+}
+
+public static ArrayList<Entreprises> listeE() {
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	ResultSet rs =null;
+	ArrayList<Entreprises> list = new ArrayList<Entreprises>();
+	
+	try {
+
+		// Etape 1 : Chargement du driver
+		Class.forName("com.mysql.jdbc.Driver");
+
+		// Etape 2 : récupération de la connexion
+		cn = DriverManager.getConnection(url, login, passwd);
+
+		// Etape 3 : Création d'un statement
+		st = cn.createStatement();
+
+		String sql = "SELECT `NomEntreprise`,`Adresse`,`Telephone`,`Commentaire` FROM `entreprises`";
+
+		// Etape 4 : exécution requête
+		rs = st.executeQuery(sql);
+
+		// Si récup données alors étapes 5 (parcours Resultset)
+
+		while (rs.next()) {
+			list.add(new Entreprises(rs.getString("NomEntreprise"),rs.getString("Adresse"),rs.getString("Telephone"),rs.getString("Commentaire")));
+					
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		try {
+		// Etape 6 : libérer ressources de la mémoire.
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	return list;
 }
 
@@ -1359,6 +1407,162 @@ public static String numeroEntreprise(Offres o) {
 	return num;
 	
 }
+
+
+public static void supprimerOffre(Offres o) {
+	
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "DELETE FROM `Offres` WHERE `NomEntreprise`=\""+o.Ent+"\" AND `Poste`=\""+o.Pos+"\" AND `Duree`=\""+o.Dur+"\"";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+}
+
+
+public static void supprimerPostulationViaO(Offres o) {
+	
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "DELETE FROM `postulation` WHERE `NomEntreprise`=\""+o.Ent+"\" AND `Poste`=\""+o.Pos+"\" AND `Duree`=\""+o.Dur+"\"";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+	
+}
+
+
+public static void supprimerEntreprises(String nom, String adresse, String tel, String com) {
+	
+	String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+	String login = "root";
+	String passwd = "";
+	Connection cn =null;
+	Statement st =null;
+	try{
+		Class.forName("com.mysql.jdbc.Driver");
+		cn = DriverManager.getConnection(url,login,passwd);
+		st= cn.createStatement();
+		
+		String sql = "DELETE FROM `Entreprises` WHERE `NomEntreprise`=\""+nom+"\" AND `Adresse`=\""+adresse+"\" AND `Telephone`=\""+tel+"\" AND `Commentaire`=\""+com+"\"";
+		
+		st.executeUpdate(sql);
+	}
+	catch (SQLException e){
+		e.printStackTrace();
+	}
+	catch (ClassNotFoundException e){
+		e.printStackTrace();
+	} 
+	finally {
+			try {
+				cn.close();
+				st.close();
+				}
+			catch (SQLException e)
+				{
+				e.printStackTrace();
+				}
+			}
+}
+
+
+public static ArrayList<Utilisateur> listeU() {
+
+		String url = "jdbc:mysql://localhost/gestionstages?useSSL=false";
+		String login = "root";
+		String passwd = "";
+		Connection cn =null;
+		Statement st =null;
+		ResultSet rs =null;
+		ArrayList<Utilisateur> list = new ArrayList<Utilisateur>();
+		
+		try {
+
+			// Etape 1 : Chargement du driver
+			Class.forName("com.mysql.jdbc.Driver");
+
+			// Etape 2 : récupération de la connexion
+			cn = DriverManager.getConnection(url, login, passwd);
+
+			// Etape 3 : Création d'un statement
+			st = cn.createStatement();
+
+			String sql = "SELECT `NomEntreprise`,`Adresse`,`Telephone`,`Commentaire` FROM `entreprises`";
+
+			// Etape 4 : exécution requête
+			rs = st.executeQuery(sql);
+
+			// Si récup données alors étapes 5 (parcours Resultset)
+
+			while (rs.next()) {
+				//list.add(new Entreprises(rs.getString("NomEntreprise"),rs.getString("Adresse"),rs.getString("Telephone"),rs.getString("Commentaire")));
+						
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+			// Etape 6 : libérer ressources de la mémoire.
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
 
 
 	

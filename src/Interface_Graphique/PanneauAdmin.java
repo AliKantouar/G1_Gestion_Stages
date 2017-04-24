@@ -17,9 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class PanneauAdmin extends JPanel {
 
-	/**
-	 * Create the panel.
-	 */
+	
 	Application a;
 	
 	public PanneauAdmin(Application a) {
@@ -90,6 +88,7 @@ public class PanneauAdmin extends JPanel {
 		add(btnNewButton_5, gbc_btnNewButton_5);
 		
 		JButton btnNewButton_2 = new JButton("Consulter");
+		btnNewButton_2.addActionListener(new AllerPage(this.a,21));
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
@@ -99,6 +98,7 @@ public class PanneauAdmin extends JPanel {
 		
 		JButton btnNewButton_3 = new JButton("Consulter");
 		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
+		btnNewButton_3.addActionListener(new AllerPage(this.a,20));
 		gbc_btnNewButton_3.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_3.gridx = 2;
@@ -106,10 +106,7 @@ public class PanneauAdmin extends JPanel {
 		add(btnNewButton_3, gbc_btnNewButton_3);
 		
 		JButton btnNewButton_6 = new JButton("Consulter");
-		btnNewButton_6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnNewButton_6.addActionListener(new AllerPage(this.a,21));
 		GridBagConstraints gbc_btnNewButton_6 = new GridBagConstraints();
 		gbc_btnNewButton_6.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton_6.insets = new Insets(0, 0, 5, 0);

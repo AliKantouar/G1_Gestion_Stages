@@ -66,7 +66,7 @@ public class modifEnt extends JPanel {
 		panel_1.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Retour");
-		btnNewButton_1.addActionListener(new AllerPage(this.a,11));
+		btnNewButton_1.addActionListener(new AllerPage(this.a,11,user));
 		panel_1.add(btnNewButton_1);
 		
 		JPanel panel_2 = new JPanel();

@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 
+import Interface_Graphique.GererOffr;
 import Interface_Graphique.ListeCv;
 import Principal.DAO;
 import Principal.Offres;
@@ -23,7 +24,8 @@ public class Recherche implements ActionListener {
 	boolean e;
 	boolean d;
 	boolean p;
-	
+	GererOffr ge;
+	boolean admin = false;
 	
 	
 	public Recherche(ListeCv listeCv) {
@@ -32,9 +34,17 @@ public class Recherche implements ActionListener {
 	
 	}
 
+	public Recherche(GererOffr GererOffr) {
+		// TODO Auto-generated constructor stub
+		this.ge=GererOffr;
+		admin=true;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		if(!admin)
+		{
 		this.e=lcv.getRdbtnNewRadioButtonE().isSelected();
 		this.d=lcv.getRdbtnNewRadioButton_D().isSelected();
 		this.p=lcv.getRdbtnNewRadioButton_p().isSelected();
@@ -107,6 +117,89 @@ public class Recherche implements ActionListener {
 		this.lcv.getPanel_2().remove(this.lcv.getScrollPane());
 		this.lcv.afficherliste(offres);
 		}
+	
+		}
+		else
+		{
+			this.e=ge.getRdbtnNewRadioButtonE().isSelected();
+			this.d=ge.getRdbtnNewRadioButton_D().isSelected();
+			this.p=ge.getRdbtnNewRadioButton_p().isSelected();
+			ArrayList<Offres> offres = new ArrayList<Offres>();
+			boolean faire = true;
+			if(e)
+			{
+				if(d)
+				{
+					if(p)
+					{
+						System.out.println("edp ---------------------------------------------------------------");
+						offres=Rechercheedp();
+					}
+					else
+					{
+						System.out.println("ed");
+						offres=Rechercheed();
+					}	
+				}
+				else
+				{
+					if(p)
+					{
+						System.out.println("ep");
+						offres=Rechercheep();
+					}
+					else
+					{
+						System.out.println("e");
+						offres=Recherchee();
+					}
+				}
+			}
+			else
+			{
+				if(d)
+				{
+					if(p)
+					{
+						System.out.println("dp");
+						offres=Recherchedp();
+					}
+					else
+					{
+						System.out.println("d");
+						offres=Recherched();
+					}	
+				}
+				else
+				{
+					if(p)
+					{
+						System.out.println("p");
+						offres=Recherchep();
+					}
+					else
+					{
+						faire=false;
+						this.ge.setNbr(DAO.listeO().size());
+						this.ge.getPanel_2().remove(this.ge.getScrollPane());
+						this.ge.afficherliste(DAO.listeO());
+					}
+
+				}
+			}
+			
+			if(faire){
+			this.ge.setNbr(offres.size());
+			this.ge.getPanel_2().remove(this.ge.getScrollPane());
+			this.ge.afficherliste(offres);
+			}
+		}
+	
+	
+	
+	
+	
+	
 	}
 
 	
@@ -116,16 +209,29 @@ public class Recherche implements ActionListener {
 	ArrayList<Offres> offres = DAO.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
-			
+			if(!admin){
 			if(!offres.get(i).poste().equals(this.lcv.getComboBox_1().getSelectedItem().toString()))
 			{
 				
 				offres.remove(i);
 				i--;
+			}}
+			else
+			{
+				if(!offres.get(i).poste().equals(this.ge.getComboBox_1().getSelectedItem().toString()))
+				{
+					
+					offres.remove(i);
+					i--;
+				}
 			}
 		}
 		
 		return offres;
+		
+		
+		
+		
 	
 	}
 
@@ -133,6 +239,7 @@ public class Recherche implements ActionListener {
 		// TODO Auto-generated method stub
 		
 		ArrayList<Offres> offres = DAO.listeO();
+		if(!admin){
 		for(int i = 0;i<offres.size();i++)
 		{
 			if(this.lcv.getTextField().getText().toString().equals("")&&this.lcv.getTextField_1().getText().toString().equals("")){
@@ -170,13 +277,53 @@ public class Recherche implements ActionListener {
 				}
 			}
 		}
-		
-		System.out.println(offres.size());
-		/*for(int d=0;d<offres.size();d++)
-		{
-			offres.get(d).Afficher();
-		}*/
 
+	
+		}
+		else
+		{
+			for(int i = 0;i<offres.size();i++)
+			{
+				if(this.ge.getTextField().getText().toString().equals("")&&this.ge.getTextField_1().getText().toString().equals("")){
+				
+				}
+				else{
+					if(this.ge.getTextField().getText().toString().equals(""))
+					{
+						
+						if(Integer.parseInt(offres.get(i).getDur())>Integer.parseInt(this.ge.getTextField_1().getText().toString()))
+						{
+						
+							offres.remove(i);
+							i--;
+						}
+					}
+					else if(this.ge.getTextField_1().getText().toString().equals(""))
+					{
+						if(Integer.parseInt(offres.get(i).getDur())<Integer.parseInt(this.ge.getTextField().getText().toString()))
+						{
+						
+							offres.remove(i);
+							i--;
+						}
+					}
+					else
+					{
+						
+						if(Integer.parseInt(offres.get(i).getDur())>Integer.parseInt(this.ge.getTextField_1().getText().toString())||Integer.parseInt(offres.get(i).getDur())<Integer.parseInt(this.ge.getTextField().getText().toString()))
+						{
+							
+							offres.remove(i);
+							i--;
+						}
+					}
+				}
+			}
+
+		}
+		
+		
+		
 		return offres;
 	}
 
@@ -185,11 +332,21 @@ public class Recherche implements ActionListener {
 		ArrayList<Offres> offres = DAO.listeO();
 		for(int i = 0;i<offres.size();i++)
 		{
+			if(!admin){
 			if(!offres.get(i).getEnt().equals(this.lcv.getComboBox().getSelectedItem().toString()))
 			{
 				
 				offres.remove(i);
 				i--;
+			}}
+			else
+			{
+				if(!offres.get(i).getEnt().equals(this.ge.getComboBox().getSelectedItem().toString()))
+				{
+					
+					offres.remove(i);
+					i--;
+				}
 			}
 		}
 		
@@ -207,8 +364,6 @@ public class Recherche implements ActionListener {
 		
 		return offres;
 	}
-
-	
 
 	private ArrayList<Offres> Commun(ArrayList<Offres> offres1, ArrayList<Offres> offres2) {
 		// TODO Auto-generated method stub

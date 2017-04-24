@@ -35,6 +35,8 @@ public class ListePostulation extends JPanel {
 	JPanel Pane;
 	Application a ;
 	String user ;
+	Icon Ent;
+	JPanel panel2;
 	public ListePostulation(Application a , String user) {
 		this.a=a;
 		this.user=user;
@@ -59,7 +61,7 @@ public class ListePostulation extends JPanel {
 		panel_1.add(btnNewButton);
 		
 		
-		JPanel panel2 = new JPanel();
+		panel2 = new JPanel();
 		panel2.setLayout(new BorderLayout(0, 0));
 		add(panel2, BorderLayout.CENTER);
 		
@@ -70,7 +72,7 @@ public class ListePostulation extends JPanel {
 		gbc.insets=new Insets(10,10,10,10);
 		Pane.setLayout(grille);
 		gbc.gridy=0;
-		Icon Ent = new ImageIcon("ressources/Ent.png"); 
+		Ent = new ImageIcon("ressources/Ent.png"); 
 		ArrayList<Postulation> postulations = DAO.listePostulation(user);
 		
 		for(int i = 0;i<postulations.size();i++)
@@ -89,13 +91,13 @@ public class ListePostulation extends JPanel {
 			if(p.getEtat()=='F'||p.getEtat()=='A')
 			{
 				gbc.gridx++;
-				Pane.add(new AccepterPostulation("Accepter",p),gbc);
+				Pane.add(new AccepterPostulation("Accepter",p,this, a , user),gbc);
 			}
 			if(p.getEtat()!='F')
 			{
 
 				gbc.gridx++;
-				Pane.add(new RefuserPostulation("Refuser",p),gbc);
+				Pane.add(new RefuserPostulation("Refuser",p, this, a, user),gbc);
 					
 			}
 		}
