@@ -1,6 +1,7 @@
 package Interface_Graphique;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,6 +21,11 @@ public class PanneauEnt extends Container {
 	public PanneauEnt(Application a , String user) {
 		this.a=a;
 		this.user=user;
+		this.a.setPreferredSize(new Dimension(450, 300));
+		this.a.pack();
+		this.a.setLocationRelativeTo(null);
+		this.a.setVisible(true);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{450, 0};
 		gridBagLayout.rowHeights = new int[]{24, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -67,7 +73,7 @@ public class PanneauEnt extends Container {
 		
 		JButton btnNewButton_1 = new JButton("Modifier entreprise");
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	//	btnNewButton_1.addActionListener(new AllerPage(this.a,8,user));
+		btnNewButton_1.addActionListener(new AllerPage(this.a,17,user));
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton_1.gridx = 0;

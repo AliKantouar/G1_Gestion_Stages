@@ -275,7 +275,6 @@ public class modifCV extends JPanel {
 		btnNewButton_1.addActionListener(new AllerPage(this.a,7,user));
 	
 		DemoJdbc.initModifCV(this);
-	/////	DemoJdbc.initModifCV(this);
 		
 	
 	

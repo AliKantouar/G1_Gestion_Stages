@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,11 @@ public class PanneauAdmin extends JPanel {
 	
 	public PanneauAdmin(Application a) {
 		this.a=a;
+		this.a.setPreferredSize(new Dimension(450, 300));
+		this.a.pack();
+		this.a.setLocationRelativeTo(null);
+		this.a.setVisible(true);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{140, 25, 126, 25, 0, 0};
 		gridBagLayout.rowHeights = new int[]{68, 0, 46, 0, 51, 0, 0, 0};
