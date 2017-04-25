@@ -28,7 +28,7 @@ public class ConnexionU implements ActionListener {
 		this.mdp=c.getTextField_1().getText();
 		//criptage du mot de passe
 		
-		if(this.user.equals("")||this.mdp.equals("d41d8cd98f00b204e9800998ecf8427e"))
+		if(this.user.equals("")||this.mdp.equals(""))
 		{
 			Erreur mdpInconnu= new Erreur("Mot de passe incorrect ou nom d'utilisateur inconnu");
 		}
