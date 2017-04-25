@@ -59,12 +59,12 @@ public class Recherche implements ActionListener {
 			{
 				if(p)
 				{
-					System.out.println("edp ---------------------------------------------------------------");
+					
 					offres=Rechercheedp();
 				}
 				else
 				{
-					System.out.println("ed");
+					
 					offres=Rechercheed();
 				}	
 			}
@@ -72,12 +72,11 @@ public class Recherche implements ActionListener {
 			{
 				if(p)
 				{
-					System.out.println("ep");
+					
 					offres=Rechercheep();
 				}
 				else
 				{
-					System.out.println("e");
 					offres=Recherchee();
 				}
 			}

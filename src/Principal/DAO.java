@@ -27,7 +27,9 @@ public static void Inscrire(String user,String mdp) {
 		st= cn.createStatement();
 		
 		
-		String sql = "INSERT INTO `Utilisateur` (`Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets`) VALUES ('"+user+"', '"+mdp+"', '', '', '', '', '', '', '', '', '');";
+		String sql = "INSERT INTO `Utilisateur` (`Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`,"
+				+ " `Prenom`, `Formation`, `Competences`, `Experience`, `Interets`)"
+				+ " VALUES ('"+user+"', '"+mdp+"', '', '', '', '', '', '', '', '', '');";
 		
 		st.executeUpdate(sql);
 	}
@@ -144,17 +146,15 @@ public static boolean connexionU(String user,String mdp) {
 		// Etape 3 : Création d'un statement
 		st = cn.createStatement();
 
-		String sql = "SELECT `Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`, `Formation`, `Competences`, `Experience`, `Interets` FROM `Utilisateur` WHERE `Identifiant`=\""+user+"\" AND `Mdp`=\""+mdp+"\"";
+		String sql = "SELECT `Identifiant`, `Mdp`, `Telephone`, `Mail`, `Adresse`, `Nom`, `Prenom`,"
+				+ " `Formation`, `Competences`, `Experience`, `Interets` "
+				+ "FROM `Utilisateur` "
+				+ "WHERE `Identifiant`=\""+user+"\" AND `Mdp`=\""+mdp+"\"";
 
 		// Etape 4 : exécution requête
 		rs = st.executeQuery(sql);
-
 		// Si récup données alors étapes 5 (parcours Resultset)
-
 		while (rs.next()) {
-
-		
-
 			if(rs.getString("Identifiant").equals(""))
 			{
 				existe=false;
